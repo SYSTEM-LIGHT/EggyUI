@@ -1,5 +1,4 @@
 ﻿# EggyUI-Rainmeter-Desktop-Widgets-Settings
-[English Version](README_en-us.md) | [中文版本](README.md)
 
 ## 🎮 项目简介
 **EggyUI-Rainmeter-Desktop-Widgets-Settings** 是 **EggyUI** 主题包的核心组件之一，专为管理其配套的 [Rainmeter](https://www.rainmeter.net/) 桌面小组件而设计。
