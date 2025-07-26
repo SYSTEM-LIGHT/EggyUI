@@ -1,4 +1,4 @@
-﻿# EggyUI-Help 项目介绍
+﻿# EggyUI-Help
 
 ## 🎮 项目简介  
 **EggyUI-Help** 是 **EggyUI** 主题包的核心帮助程序，专为用户提供主题包和 Rainmeter 小组件的使用指南与技术支持。
