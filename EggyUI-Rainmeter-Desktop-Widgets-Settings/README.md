@@ -32,7 +32,7 @@
 *   **作用范围：** 通过此程序，用户可以轻松调整小组件的外观、位置、功能选项等，打造高度个性化的《蛋仔派对》风格 **Windows 桌面环境**
 
 ## 💡 总结
-EggyUI-Rainmeter-Desktop-Widgets-Settings 是您个性化和管理炫酷 Rainmeter 桌面小组件的必备工具。
+EggyUI-Rainmeter-Desktop-Widgets-Settings 是您个性化和管理 EggyUI Rainmeter 桌面小组件的必备工具。
 
 **重要重申：**  
 🔒 本项目为《蛋仔派对》粉丝创作作品：
