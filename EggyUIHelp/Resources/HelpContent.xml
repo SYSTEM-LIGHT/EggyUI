@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HelpContent>
+	<!-- 在此处放置帮助内容 -->
+  <Category Text="如何修改Rainmeter桌面小组件的用户名？">
+    <Answer Text="进入文档\Rainmeter\Skins\EggyUI\Home，修改文件夹内的home.ini文件，不用担心找不到在哪里改，home.ini里有对应的注释。"/>
+  </Category>
+  <Category Text="如何修改Rainmeter桌面小工具尺寸？">
+    <Answer Text="和修改用户名一样，找到对应组件的ini，修改'W'和'H'（分别对应长和宽，一定要等比例缩放哦！）"/>
+  </Category>
+  <Category Text="我修改了Rainmeter桌面小组件的皮肤，但修改似乎并未生效？">
+    <Answer Text="进入Rainmeter管理器，然后点击'刷新全部（或Refresh All）'，重启Rainmeter也行。"/>
+  </Category>
+  <Category Text="如何修改文件夹背景？">
+    <Answer Text="进入C:\Windows\EggyCore\FolderBackground\image，修改图像文件（图片分辨率建议不要太大，而且颜色不要太花，不然瞎眼，只支持JPG和PNG格式的图片，如果出了问题按住ESC再进入文件资源管理器）"/>
+  </Category>
+  <!-- 新增的EggyUI主题包通用帮助条目 -->
+  <Category Text="EggyUI是什么性质的项目？">
+    <Answer Text="EggyUI是一个非盈利性粉丝创作项目，仅是一个普通的Windows桌面美化包。所有素材均为原创重制或合法获取，不含任何游戏解包内容。"/>
+  </Category>
+  <Category Text="可以将EggyUI用于商业用途吗？">
+    <Answer Text="不可以。本项目严格禁止任何商业用途，包括付费销售、捆绑商业软件、广告盈利或商业服务集成。仅限个人免费使用。"/>
+  </Category>
+  <Category Text="作者信息">
+    <Item Text="by EggyUI 项目组"/>
+    <Item Text="程序编写：@BSOD-MEMZ &amp; @冷落的小情绪"/>
+    <Item Text="项目性质：非盈利性粉丝创作，禁止商业用途"/>
+    <Item Text="素材声明：所有内容均为原创重制或合法获取"/>
+    <Item Text="主题定位：Windows桌面操作系统个性化主题包"/>
+    <Item Text="欢迎加入EggyUI交流群：882583677"/>
+  </Category>
+</HelpContent>
