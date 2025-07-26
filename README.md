@@ -18,7 +18,7 @@
 
 ## 🌟 关于 EggyUI
 *   **性质：** **非盈利性**粉丝创作项目（**仅是一个普通的 Windows 桌面美化包**）
-*   **开发者：** 由 [**BSOD-MEMZ**](https://space.bilibili.com/1975308950) 及其团队开发
+*   **开发者：** 由 [**BSOD-MEMZ**](https://github.com/BSOD-MEMZ)（[B站主页](https://space.bilibili.com/1975308950)） 及其团队开发
 *   **定位：** 一个功能强大的 **Windows 桌面操作系统** 个性化主题包
 *   **版权声明：** 
     - 基于网易《蛋仔派对》游戏UI的二次创作
