@@ -1,4 +1,4 @@
-﻿﻿# EggyUI﻿
+﻿# EggyUI
 
 ## 🎮 项目简介
 **EggyUI** 是一个 **Windows 桌面美化主题包**。
