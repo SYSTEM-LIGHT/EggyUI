@@ -1,0 +1,129 @@
+EggyUI 项目许可证
+
+本项目采用双重许可证模式：
+
+一、创意作品许可证：Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)
+适用于：本项目中的所有创意资源（包括但不限于图像、音频、文档等）
+
+Creative Commons Corporation ("Creative Commons") 不是律师事务所，也不提供法律服务。分销 Creative Commons 许可证不构成律师-client 关系。Creative Commons 提供这些材料仅供参考，不构成法律建议。
+
+您接受 Creative Commons 许可证的条款和条件，仅基于您自己的判断，不依赖于 Creative Commons 的任何陈述或保证。
+
+Creative Commons 不对任何损失承担责任，包括但不限于因使用 Creative Commons 许可证而产生的直接、间接、特殊或后果性损害。
+
+## Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International 许可证条款
+
+### 1. 定义
+
+- **许可作品**：指根据本许可证提供的作品，由许可人授权。
+- **衍生作品**：指基于许可作品创作的作品，如翻译、改编、编曲或其他修改，构成原创作品的衍生作品。
+- **共享**：指以任何方式或媒介分发、公开表演、公开播放、公开展示、传输或传播作品。
+- **商业使用**：指主要目的是获得商业优势或金钱报酬的使用。
+
+### 2. 授予的权利
+
+根据本许可证的条款和条件，许可人授予您全球范围内、非排他性、免版税的权利，以行使以下权利：
+
+- **复制**：制作许可作品的副本。
+- **分发**：分发许可作品的副本。
+- **公开表演**：公开表演许可作品。
+- **公开展示**：公开展示许可作品。
+- **创作衍生作品**：创作衍生作品，但衍生作品必须采用与本许可证相同的许可证发布。
+
+### 3. 限制条件
+
+- **署名**：您必须为原作者提供适当的署名，提供本许可证的链接，并表明是否对作品进行了修改。
+- **非商业使用**：您不得将许可作品用于商业目的。
+- **相同方式共享**：如果您创作衍生作品，必须采用与本许可证相同的许可证发布衍生作品。
+
+二、软件代码许可证：GNU General Public License v3.0 (GPLv3)
+适用于：本项目中的所有软件代码（包括但不限于 .cs 文件、配置文件等）
+
+## GNU GENERAL PUBLIC LICENSE
+Version 3, 29 June 2007
+
+Copyright (C) 2007 Free Software Foundation, Inc. <https://fsf.org/>
+Everyone is permitted to copy and distribute verbatim copies
+of this license document, but changing it is not allowed.
+
+### Preamble
+
+The GNU General Public License is a free, copyleft license for
+software and other kinds of works.
+
+The licenses for most software and other practical works are designed
+to take away your freedom to share and change the works.  By contrast,
+the GNU General Public License is intended to guarantee your freedom
+to share and change all versions of a program--to make sure it remains
+free software for all its users.
+
+### TERMS AND CONDITIONS
+
+0. Definitions.
+
+"This License" refers to version 3 of the GNU General Public License.
+
+"Copyright" also means copyright-like laws that apply to other kinds of
+works, such as semiconductor masks.
+
+"The Program" refers to any copyrightable work licensed under this
+License.  Each licensee is addressed as "you".  "Licensees" and
+"recipients" may be individuals or organizations.
+
+To "modify" a work means to copy from or adapt all or part of the work
+in a fashion requiring copyright permission, other than the making of
+averbatim copy.  The resulting work is called a "modified version"
+of the earlier work or a work "based on" the earlier work.
+
+A "covered work" means either the unmodified Program or a work based
+on the Program.
+
+### 2. Basic Permissions
+
+All rights granted under this License are granted for the term of
+copyright on the Program, and are irrevocable provided the stated
+conditions are met.  This License explicitly affirms your unlimited
+permission to run the unmodified Program.  The output from running a
+covered work is covered by this License only if the output, given its
+content, constitutes a covered work.
+
+### 15. Disclaimer of Warranty.
+
+THERE IS NO WARRANTY FOR THE PROGRAM, TO THE EXTENT PERMITTED BY
+APPLICABLE LAW.  EXCEPT WHEN OTHERWISE STATED IN WRITING THE COPYRIGHT
+HOLDERS AND/OR OTHER PARTIES PROVIDE THE PROGRAM "AS IS" WITHOUT WARRANTY
+OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE PROGRAM
+IS WITH YOU.  SHOULD THE PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF
+ALL NECESSARY SERVICING, REPAIR OR CORRECTION.
+
+### 16. Limitation of Liability.
+
+IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
+WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MODIFIES AND/OR CONVEYS
+THE PROGRAM AS PERMITTED ABOVE, BE LIABLE TO YOU FOR DAMAGES, INCLUDING ANY
+GENERAL, SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE
+USE OR INABILITY TO USE THE PROGRAM (INCLUDING BUT NOT LIMITED TO LOSS OF
+DATA OR DATA BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD
+PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER PROGRAMS),
+EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
+SUCH DAMAGES.
+
+### 17. Interpretation of Sections 15 and 16.
+
+If the disclaimer of warranty and limitation of liability provided
+above cannot be given local legal effect according to their terms,
+reviewing courts shall apply local law that most closely approximates
+a strict liability standard.
+
+## END OF TERMS AND CONDITIONS
+
+三、特别说明
+1. 本项目是《蛋仔派对》的粉丝创作，非商业性质，永久免费。
+2. 本项目未使用任何游戏解包素材，所有素材均为合法获取或自行重制。
+3. 本项目与微软（Microsoft Corporation）和网易无任何隶属、赞助关系。
+4. Windows 是微软在美国和其他国家的注册商标。
+5. 《蛋仔派对》相关商标和版权归网易所有。
+
+许可证文本最后更新日期：2025-08-08
