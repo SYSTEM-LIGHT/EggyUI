@@ -4,7 +4,7 @@
 `ResetRainmeter` 是一款专为 Windows 平台设计的实用工具，用于彻底重置 Rainmeter 桌面定制软件的配置环境。当 Rainmeter 因配置错误、插件冲突或皮肤异常导致功能异常时，本工具可一键完成以下操作：
 1. 强制终止 Rainmeter 进程
 2. 清除用户配置数据（%APPDATA%\Rainmeter）
-3. 删除皮肤资源文档（%USERPROFILE%\DocumentsRainmeter）
+3. 删除皮肤资源文档（%USERPROFILE%\Documents\Rainmeter）
 4. 重新初始化 Rainmeter 运行环境
 
 > ⚠️ **重要警示**  
