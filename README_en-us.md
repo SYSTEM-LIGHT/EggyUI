@@ -97,6 +97,7 @@ Key Reaffirmations:
 *   Permanently free; commercial use forbidden.
 *   Uses no decompiled game assets—only remade/legitimate materials.
 *   Commercialization violates the license.
+
 🔒 Legal & Trademarks:
 *   EggyUI is unrelated to Microsoft.
 *   Windows® is a registered trademark of Microsoft.
