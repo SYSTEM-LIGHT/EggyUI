@@ -1,5 +1,7 @@
 ﻿# EggyUI
 
+**简体中文** | [English](README_en-us.md)
+
 ## 🎮 项目简介
 EggyUI 是一款专为 Windows 桌面打造的美化主题包。
 
