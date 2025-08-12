@@ -28,21 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Settings_Window));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox3 = new GroupBox();
             groupBox2 = new GroupBox();
-            button5 = new Button();
-            button4 = new Button();
+            ReloadFolderBackgroundPicButton = new Button();
+            FolderBackgroundPic = new PictureBox();
+            OpenFBGImageFolder = new Button();
+            DisableFBG = new Button();
+            EnableFBG = new Button();
             groupBox1 = new GroupBox();
-            button3 = new Button();
-            button2 = new Button();
+            ResetRainmeterConfig = new Button();
+            OpenRainmeterSkinFolder = new Button();
             checkBox1 = new CheckBox();
-            button1 = new Button();
+            OpenRainmeterFolder = new Button();
             tabPage2 = new TabPage();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,53 +72,88 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(442, 570);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "tabPage1";
+            tabPage1.Text = "常规设置";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // groupBox3
             // 
-            groupBox3.Location = new Point(8, 318);
+            groupBox3.Location = new Point(8, 283);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(426, 244);
+            groupBox3.Size = new Size(426, 279);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "其它设置";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(button5);
-            groupBox2.Controls.Add(button4);
+            groupBox2.Controls.Add(ReloadFolderBackgroundPicButton);
+            groupBox2.Controls.Add(FolderBackgroundPic);
+            groupBox2.Controls.Add(OpenFBGImageFolder);
+            groupBox2.Controls.Add(DisableFBG);
+            groupBox2.Controls.Add(EnableFBG);
             groupBox2.Location = new Point(8, 112);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(426, 150);
+            groupBox2.Size = new Size(426, 165);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "文件夹背景设置";
             // 
-            // button5
+            // ReloadFolderBackgroundPicButton
             // 
-            button5.Location = new Point(92, 22);
-            button5.Name = "button5";
-            button5.Size = new Size(80, 40);
-            button5.TabIndex = 2;
-            button5.Text = "关闭";
-            button5.UseVisualStyleBackColor = true;
+            ReloadFolderBackgroundPicButton.Location = new Point(6, 114);
+            ReloadFolderBackgroundPicButton.Name = "ReloadFolderBackgroundPicButton";
+            ReloadFolderBackgroundPicButton.Size = new Size(166, 40);
+            ReloadFolderBackgroundPicButton.TabIndex = 5;
+            ReloadFolderBackgroundPicButton.Text = "刷新预览图像";
+            ReloadFolderBackgroundPicButton.UseVisualStyleBackColor = true;
+            ReloadFolderBackgroundPicButton.Click += ReloadFolderBackgroundPicButton_Click;
             // 
-            // button4
+            // FolderBackgroundPic
             // 
-            button4.Location = new Point(6, 22);
-            button4.Name = "button4";
-            button4.Size = new Size(80, 40);
-            button4.TabIndex = 1;
-            button4.Text = "开启";
-            button4.UseVisualStyleBackColor = true;
+            FolderBackgroundPic.Image = (Image)resources.GetObject("FolderBackgroundPic.Image");
+            FolderBackgroundPic.Location = new Point(178, 22);
+            FolderBackgroundPic.Name = "FolderBackgroundPic";
+            FolderBackgroundPic.Size = new Size(242, 132);
+            FolderBackgroundPic.SizeMode = PictureBoxSizeMode.Zoom;
+            FolderBackgroundPic.TabIndex = 4;
+            FolderBackgroundPic.TabStop = false;
+            // 
+            // OpenFBGImageFolder
+            // 
+            OpenFBGImageFolder.Location = new Point(6, 68);
+            OpenFBGImageFolder.Name = "OpenFBGImageFolder";
+            OpenFBGImageFolder.Size = new Size(166, 40);
+            OpenFBGImageFolder.TabIndex = 3;
+            OpenFBGImageFolder.Text = "打开文件夹背景图片目录";
+            OpenFBGImageFolder.UseVisualStyleBackColor = true;
+            OpenFBGImageFolder.Click += FBGSettingsButton_Click;
+            // 
+            // DisableFBG
+            // 
+            DisableFBG.Location = new Point(92, 22);
+            DisableFBG.Name = "DisableFBG";
+            DisableFBG.Size = new Size(80, 40);
+            DisableFBG.TabIndex = 2;
+            DisableFBG.Text = "关闭";
+            DisableFBG.UseVisualStyleBackColor = true;
+            DisableFBG.Click += FBGSettingsButton_Click;
+            // 
+            // EnableFBG
+            // 
+            EnableFBG.Location = new Point(6, 22);
+            EnableFBG.Name = "EnableFBG";
+            EnableFBG.Size = new Size(80, 40);
+            EnableFBG.TabIndex = 1;
+            EnableFBG.Text = "开启";
+            EnableFBG.UseVisualStyleBackColor = true;
+            EnableFBG.Click += FBGSettingsButton_Click;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button3);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(ResetRainmeterConfig);
+            groupBox1.Controls.Add(OpenRainmeterSkinFolder);
             groupBox1.Controls.Add(checkBox1);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(OpenRainmeterFolder);
             groupBox1.Location = new Point(8, 6);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(426, 100);
@@ -121,24 +161,25 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Rainmeter 设置";
             // 
-            // button3
+            // ResetRainmeterConfig
             // 
-            button3.Location = new Point(288, 49);
-            button3.Name = "button3";
-            button3.Size = new Size(132, 40);
-            button3.TabIndex = 3;
-            button3.Text = "重置 Rainmeter";
-            button3.UseVisualStyleBackColor = true;
+            ResetRainmeterConfig.Location = new Point(288, 49);
+            ResetRainmeterConfig.Name = "ResetRainmeterConfig";
+            ResetRainmeterConfig.Size = new Size(132, 40);
+            ResetRainmeterConfig.TabIndex = 3;
+            ResetRainmeterConfig.Text = "重置 Rainmeter";
+            ResetRainmeterConfig.UseVisualStyleBackColor = true;
+            ResetRainmeterConfig.Click += RainmeterSettingsButton_Click;
             // 
-            // button2
+            // OpenRainmeterSkinFolder
             // 
-            button2.Location = new Point(162, 49);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 40);
-            button2.TabIndex = 2;
-            button2.Text = "打开皮肤文件夹";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            OpenRainmeterSkinFolder.Location = new Point(162, 49);
+            OpenRainmeterSkinFolder.Name = "OpenRainmeterSkinFolder";
+            OpenRainmeterSkinFolder.Size = new Size(120, 40);
+            OpenRainmeterSkinFolder.TabIndex = 2;
+            OpenRainmeterSkinFolder.Text = "打开皮肤文件夹";
+            OpenRainmeterSkinFolder.UseVisualStyleBackColor = true;
+            OpenRainmeterSkinFolder.Click += RainmeterSettingsButton_Click;
             // 
             // checkBox1
             // 
@@ -151,15 +192,15 @@
             checkBox1.UseVisualStyleBackColor = true;
             checkBox1.CheckedChanged += checkBox1_CheckedChanged;
             // 
-            // button1
+            // OpenRainmeterFolder
             // 
-            button1.Location = new Point(6, 49);
-            button1.Name = "button1";
-            button1.Size = new Size(150, 40);
-            button1.TabIndex = 0;
-            button1.Text = "打开 Rainmeter 文件夹";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            OpenRainmeterFolder.Location = new Point(6, 49);
+            OpenRainmeterFolder.Name = "OpenRainmeterFolder";
+            OpenRainmeterFolder.Size = new Size(150, 40);
+            OpenRainmeterFolder.TabIndex = 0;
+            OpenRainmeterFolder.Text = "打开 Rainmeter 文件夹";
+            OpenRainmeterFolder.UseVisualStyleBackColor = true;
+            OpenRainmeterFolder.Click += RainmeterSettingsButton_Click;
             // 
             // tabPage2
             // 
@@ -168,7 +209,7 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(442, 570);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "tabPage2";
+            tabPage2.Text = "关于EggyUI";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // Settings_Window
@@ -186,6 +227,7 @@
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
@@ -199,11 +241,14 @@
         private GroupBox groupBox1;
         private GroupBox groupBox3;
         private GroupBox groupBox2;
-        private Button button1;
-        private Button button3;
-        private Button button2;
+        private Button OpenRainmeterFolder;
+        private Button ResetRainmeterConfig;
+        private Button OpenRainmeterSkinFolder;
         private CheckBox checkBox1;
-        private Button button4;
-        private Button button5;
+        private Button EnableFBG;
+        private Button DisableFBG;
+        private Button OpenFBGImageFolder;
+        private PictureBox FolderBackgroundPic;
+        private Button ReloadFolderBackgroundPicButton;
     }
 }
