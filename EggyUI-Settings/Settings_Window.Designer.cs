@@ -32,6 +32,9 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox3 = new GroupBox();
+            OpenPersonalizationSettings = new Button();
+            OpenStart11Settings = new Button();
+            OpenStartAllBackSettings = new Button();
             groupBox2 = new GroupBox();
             ReloadFolderBackgroundPicButton = new Button();
             FolderBackgroundPic = new PictureBox();
@@ -44,8 +47,10 @@
             checkBox1 = new CheckBox();
             OpenRainmeterFolder = new Button();
             tabPage2 = new TabPage();
+            OpenControl = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
+            groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).BeginInit();
             groupBox1.SuspendLayout();
@@ -77,12 +82,46 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(OpenControl);
+            groupBox3.Controls.Add(OpenPersonalizationSettings);
+            groupBox3.Controls.Add(OpenStart11Settings);
+            groupBox3.Controls.Add(OpenStartAllBackSettings);
             groupBox3.Location = new Point(8, 283);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(426, 279);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "其它设置";
+            // 
+            // OpenPersonalizationSettings
+            // 
+            OpenPersonalizationSettings.Location = new Point(6, 68);
+            OpenPersonalizationSettings.Name = "OpenPersonalizationSettings";
+            OpenPersonalizationSettings.Size = new Size(204, 40);
+            OpenPersonalizationSettings.TabIndex = 8;
+            OpenPersonalizationSettings.Text = "打开系统个性化设置";
+            OpenPersonalizationSettings.UseVisualStyleBackColor = true;
+            OpenPersonalizationSettings.Click += OtherSettingsButton_Click;
+            // 
+            // OpenStart11Settings
+            // 
+            OpenStart11Settings.Location = new Point(216, 22);
+            OpenStart11Settings.Name = "OpenStart11Settings";
+            OpenStart11Settings.Size = new Size(204, 40);
+            OpenStart11Settings.TabIndex = 7;
+            OpenStart11Settings.Text = "打开Start11设置";
+            OpenStart11Settings.UseVisualStyleBackColor = true;
+            OpenStart11Settings.Click += OtherSettingsButton_Click;
+            // 
+            // OpenStartAllBackSettings
+            // 
+            OpenStartAllBackSettings.Location = new Point(6, 22);
+            OpenStartAllBackSettings.Name = "OpenStartAllBackSettings";
+            OpenStartAllBackSettings.Size = new Size(204, 40);
+            OpenStartAllBackSettings.TabIndex = 6;
+            OpenStartAllBackSettings.Text = "打开StartAllBack设置";
+            OpenStartAllBackSettings.UseVisualStyleBackColor = true;
+            OpenStartAllBackSettings.Click += OtherSettingsButton_Click;
             // 
             // groupBox2
             // 
@@ -212,6 +251,16 @@
             tabPage2.Text = "关于EggyUI";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // OpenControl
+            // 
+            OpenControl.Location = new Point(216, 68);
+            OpenControl.Name = "OpenControl";
+            OpenControl.Size = new Size(204, 40);
+            OpenControl.TabIndex = 9;
+            OpenControl.Text = "打开控制面板";
+            OpenControl.UseVisualStyleBackColor = true;
+            OpenControl.Click += OtherSettingsButton_Click;
+            // 
             // Settings_Window
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
@@ -226,6 +275,7 @@
             Load += Settings_Window_Load;
             tabControl1.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
+            groupBox3.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).EndInit();
             groupBox1.ResumeLayout(false);
@@ -250,5 +300,9 @@
         private Button OpenFBGImageFolder;
         private PictureBox FolderBackgroundPic;
         private Button ReloadFolderBackgroundPicButton;
+        private Button OpenStart11Settings;
+        private Button OpenStartAllBackSettings;
+        private Button OpenPersonalizationSettings;
+        private Button OpenControl;
     }
 }
