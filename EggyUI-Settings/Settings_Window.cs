@@ -1,81 +1,44 @@
 // Author：一只野生的蛋小绿_Minty（https://space.bilibili.com/1591761987）
-// 注意：此设置程序尚未开发完成。部分代码由AI生成，但我作为“提示词仙人”，对代码生成过程进行了控制。后续会对代码进行测试并修正可能存在的错误。
+// 注意：此设置程序已使用接口进行重构，以提高代码的可维护性和可测试性。
 
 using Microsoft.Win32;
 using System.Diagnostics;
-using System.Xml.Linq;
 using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace EggyUI_Settings
 {
     public partial class Settings_Window : Form
     {
-        private string RainmeterPath { get; set; } = string.Empty; // Rainmeter路径
-        private string RainmeterSkinPath { get; set; } = string.Empty; // Rainmeter皮肤路径
-        private string FolderBackgroundPath { get; set; } = string.Empty; // 文件夹背景目录
-        private string StartAllBackPath { get; set; } = string.Empty; // 文件夹背景目录
-        private string Start11Path { get; set; } = string.Empty; // 文件夹背景目录
-        private readonly string configFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Settings.xml");
+        private readonly IConfigurationService _configurationService;
 
         public Settings_Window()
         {
-            LoadConfiguration();
+            // 实例化配置服务
+            _configurationService = new ConfigurationService();
+            _configurationService.LoadConfiguration();
             InitializeComponent();
         }
 
-        private void LoadConfiguration()
-        {
-            // 从XML文件读取配置
-            try
-            {
-                // 如果配置文件不存在，创建默认配置
-                if (!File.Exists(configFilePath))
-                {
-                    CreateDefaultConfig();
-                }
+        // 获取Rainmeter路径
+        private string RainmeterPath => _configurationService.RainmeterPath;
 
-                // 加载配置文件
-                XDocument doc = XDocument.Load(configFilePath);
-                RainmeterPath = doc.Root?.Element("RainmeterPath")?.Value ?? @"C:\Windows\EggyCore\Rainmeter";
-                RainmeterSkinPath = doc.Root?.Element("RainmeterSkinPath")?.Value?.Replace("%USERPROFILE%", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Rainmeter\\Skins");
-                FolderBackgroundPath = doc.Root?.Element("FolderBackgroundPath")?.Value ?? @"C:\Windows\EggyCore\FolderBackground";
-                StartAllBackPath = doc.Root?.Element("StartAllBackPath")?.Value ?? @"C:\Program Files\StartAllBack";
-                Start11Path = doc.Root?.Element("Start11Path")?.Value ?? @"C:\Program Files (x86)\Stardock\Start11";
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"加载配置时发生错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // 使用默认值
-                RainmeterPath = @"C:\Windows\EggyCore\Rainmeter";
-                RainmeterSkinPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Rainmeter\\Skins");
-                FolderBackgroundPath = @"C:\Windows\EggyCore\FolderBackground";
-                StartAllBackPath = @"C:\Program Files\StartAllBack";
-                Start11Path = @"C:\Program Files (x86)\Stardock\Start11";
-            }
-        }
+        // 获取Rainmeter皮肤路径
+        private string RainmeterSkinPath => _configurationService.RainmeterSkinPath;
 
-        private void CreateDefaultConfig()
-        {
-            // 创建默认配置文件
-            try
-            {
-                XDocument doc = new XDocument(
-                    new XDeclaration("1.0", "utf-8", "yes"),
-                    new XElement("Settings",
-                        new XElement("RainmeterPath", @"C:\Windows\EggyCore\Rainmeter"),
-                        new XElement("RainmeterSkinPath", @"%USERPROFILE%\Documents\Rainmeter\Skins"),
-                        new XElement("FolderBackgroundPath", @"C:\Windows\EggyCore\FolderBackground")
-                    )
-                );
-                doc.Save(configFilePath);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"创建默认配置文件时发生错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        // 获取文件夹背景目录
+        private string FolderBackgroundPath => _configurationService.FolderBackgroundPath;
+
+        // 获取StartAllBack路径
+        private string StartAllBackPath => _configurationService.StartAllBackPath;
+
+        // 获取Start11路径
+        private string Start11Path => _configurationService.Start11Path;
+
+        // 贴图路径
+        private string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
 
         public static bool TaskExists(string taskName)
         {
@@ -144,6 +107,8 @@ namespace EggyUI_Settings
 
         private void Settings_Window_Load(object sender, EventArgs e)
         {
+            string VersionImage = Path.Combine(ArtWorkPath, "EggyUI_Version.png");
+            if (File.Exists(VersionImage)) VersionPic.Image = Image.FromFile(VersionImage);
             ReloadFolderBackgroundPic();
             // 检测开始菜单修改软件是否存在
             OpenStartAllBackSettings.Enabled = File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"));
@@ -173,7 +138,13 @@ namespace EggyUI_Settings
         }
 
         // 通用按钮点击处理器
-        private void ButtonClickHandler(object sender, EventArgs e, Dictionary<string, string> pathMap, Dictionary<string, string> errorMsgMap)
+        private void ButtonClickHandler(
+            object sender, 
+            EventArgs e, 
+            Dictionary<string, string> pathMap, 
+            Dictionary<string, string> errorMsgMap,
+            Dictionary<string, string>? argumentsMap = null
+            )
         {
             Button btn = (Button)sender;
             try
@@ -182,6 +153,7 @@ namespace EggyUI_Settings
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = fileName,
+                    Arguments = argumentsMap is not null ? (argumentsMap.TryGetValue(btn.Name, out string? value1) ? value1 : argumentsMap["default"]) : "",
                     UseShellExecute = true
                 });
             }
@@ -194,17 +166,21 @@ namespace EggyUI_Settings
 
         private void RainmeterSettingsButton_Click(object sender, EventArgs e)
         {
+            // 路径列表
             var pathMap = new Dictionary<string, string>
             {
                 { "OpenRainmeterFolder", RainmeterPath },
                 { "OpenRainmeterSkinFolder", RainmeterSkinPath },
+                { "InstallRainmeterSkin", Path.Combine(RainmeterPath, "SkinInstaller.exe") },
                 { "default", Path.Combine(RainmeterPath, "ResetRainmeter.exe") }
             };
 
+            // 错误信息列表
             var errorMsgMap = new Dictionary<string, string>
             {
                 { "OpenRainmeterFolder", "打开Rainmeter文件夹时发生错误：{0}" },
                 { "OpenRainmeterSkinFolder", "打开Rainmeter皮肤文件夹时发生错误：{0}" },
+                { "InstallRainmeterSkin", "安装Rainmeter皮肤时发生错误：{0}" },
                 { "default", "重置Rainmeter时发生错误：{0}" }
             };
 
@@ -213,6 +189,7 @@ namespace EggyUI_Settings
 
         private void FBGSettingsButton_Click(object sender, EventArgs e)
         {
+            // 路径列表
             var pathMap = new Dictionary<string, string>
             {
                 { "EnableFBG", Path.Combine(FolderBackgroundPath, "Register.cmd") },
@@ -220,6 +197,7 @@ namespace EggyUI_Settings
                 { "default", Path.Combine(FolderBackgroundPath, "image") }
             };
 
+            // 错误信息列表
             var errorMsgMap = new Dictionary<string, string>
             {
                 { "EnableFBG", "开启文件夹背景功能时发生错误：{0}" },
@@ -238,6 +216,7 @@ namespace EggyUI_Settings
 
         private void OtherSettingsButton_Click(object sender, EventArgs e)
         {
+            // 路径列表
             var pathMap = new Dictionary<string, string>
             {
                 { "OpenStartAllBackSettings", Path.Combine(StartAllBackPath, "StartAllBackCfg.exe") },
@@ -246,6 +225,7 @@ namespace EggyUI_Settings
                 { "default", "control" }
             };
 
+            // 错误信息列表
             var errorMsgMap = new Dictionary<string, string>
             {
                 { "OpenStartAllBackSettings", "打开StartAllBack设置时发生错误：{0}" },

@@ -26,6 +26,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="artwork\EggyUI_Version.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Settings.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

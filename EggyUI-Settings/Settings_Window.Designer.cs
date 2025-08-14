@@ -32,6 +32,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox3 = new GroupBox();
+            OpenControl = new Button();
             OpenPersonalizationSettings = new Button();
             OpenStart11Settings = new Button();
             OpenStartAllBackSettings = new Button();
@@ -42,18 +43,25 @@
             DisableFBG = new Button();
             EnableFBG = new Button();
             groupBox1 = new GroupBox();
+            InstallRainmeterSkin = new Button();
             ResetRainmeterConfig = new Button();
             OpenRainmeterSkinFolder = new Button();
             checkBox1 = new CheckBox();
             OpenRainmeterFolder = new Button();
             tabPage2 = new TabPage();
-            OpenControl = new Button();
+            VersionPic = new PictureBox();
+            groupBox4 = new GroupBox();
+            richTextBox1 = new RichTextBox();
+            groupBox5 = new GroupBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).BeginInit();
             groupBox1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)VersionPic).BeginInit();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // tabControl1
@@ -86,12 +94,22 @@
             groupBox3.Controls.Add(OpenPersonalizationSettings);
             groupBox3.Controls.Add(OpenStart11Settings);
             groupBox3.Controls.Add(OpenStartAllBackSettings);
-            groupBox3.Location = new Point(8, 283);
+            groupBox3.Location = new Point(8, 328);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(426, 279);
+            groupBox3.Size = new Size(426, 234);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "其它设置";
+            // 
+            // OpenControl
+            // 
+            OpenControl.Location = new Point(216, 68);
+            OpenControl.Name = "OpenControl";
+            OpenControl.Size = new Size(204, 40);
+            OpenControl.TabIndex = 9;
+            OpenControl.Text = "打开控制面板";
+            OpenControl.UseVisualStyleBackColor = true;
+            OpenControl.Click += OtherSettingsButton_Click;
             // 
             // OpenPersonalizationSettings
             // 
@@ -130,7 +148,7 @@
             groupBox2.Controls.Add(OpenFBGImageFolder);
             groupBox2.Controls.Add(DisableFBG);
             groupBox2.Controls.Add(EnableFBG);
-            groupBox2.Location = new Point(8, 112);
+            groupBox2.Location = new Point(8, 157);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(426, 165);
             groupBox2.TabIndex = 1;
@@ -189,22 +207,33 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(InstallRainmeterSkin);
             groupBox1.Controls.Add(ResetRainmeterConfig);
             groupBox1.Controls.Add(OpenRainmeterSkinFolder);
             groupBox1.Controls.Add(checkBox1);
             groupBox1.Controls.Add(OpenRainmeterFolder);
             groupBox1.Location = new Point(8, 6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(426, 100);
+            groupBox1.Size = new Size(426, 145);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Rainmeter 设置";
             // 
+            // InstallRainmeterSkin
+            // 
+            InstallRainmeterSkin.Location = new Point(6, 95);
+            InstallRainmeterSkin.Name = "InstallRainmeterSkin";
+            InstallRainmeterSkin.Size = new Size(204, 40);
+            InstallRainmeterSkin.TabIndex = 4;
+            InstallRainmeterSkin.Text = "安装 .rmskin 皮肤包";
+            InstallRainmeterSkin.UseVisualStyleBackColor = true;
+            InstallRainmeterSkin.Click += RainmeterSettingsButton_Click;
+            // 
             // ResetRainmeterConfig
             // 
-            ResetRainmeterConfig.Location = new Point(288, 49);
+            ResetRainmeterConfig.Location = new Point(216, 95);
             ResetRainmeterConfig.Name = "ResetRainmeterConfig";
-            ResetRainmeterConfig.Size = new Size(132, 40);
+            ResetRainmeterConfig.Size = new Size(204, 40);
             ResetRainmeterConfig.TabIndex = 3;
             ResetRainmeterConfig.Text = "重置 Rainmeter";
             ResetRainmeterConfig.UseVisualStyleBackColor = true;
@@ -212,9 +241,9 @@
             // 
             // OpenRainmeterSkinFolder
             // 
-            OpenRainmeterSkinFolder.Location = new Point(162, 49);
+            OpenRainmeterSkinFolder.Location = new Point(216, 49);
             OpenRainmeterSkinFolder.Name = "OpenRainmeterSkinFolder";
-            OpenRainmeterSkinFolder.Size = new Size(120, 40);
+            OpenRainmeterSkinFolder.Size = new Size(204, 40);
             OpenRainmeterSkinFolder.TabIndex = 2;
             OpenRainmeterSkinFolder.Text = "打开皮肤文件夹";
             OpenRainmeterSkinFolder.UseVisualStyleBackColor = true;
@@ -235,7 +264,7 @@
             // 
             OpenRainmeterFolder.Location = new Point(6, 49);
             OpenRainmeterFolder.Name = "OpenRainmeterFolder";
-            OpenRainmeterFolder.Size = new Size(150, 40);
+            OpenRainmeterFolder.Size = new Size(204, 40);
             OpenRainmeterFolder.TabIndex = 0;
             OpenRainmeterFolder.Text = "打开 Rainmeter 文件夹";
             OpenRainmeterFolder.UseVisualStyleBackColor = true;
@@ -243,6 +272,8 @@
             // 
             // tabPage2
             // 
+            tabPage2.Controls.Add(groupBox5);
+            tabPage2.Controls.Add(groupBox4);
             tabPage2.Location = new Point(4, 26);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
@@ -251,15 +282,46 @@
             tabPage2.Text = "关于EggyUI";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // OpenControl
+            // VersionPic
             // 
-            OpenControl.Location = new Point(216, 68);
-            OpenControl.Name = "OpenControl";
-            OpenControl.Size = new Size(204, 40);
-            OpenControl.TabIndex = 9;
-            OpenControl.Text = "打开控制面板";
-            OpenControl.UseVisualStyleBackColor = true;
-            OpenControl.Click += OtherSettingsButton_Click;
+            VersionPic.Dock = DockStyle.Top;
+            VersionPic.Image = (Image)resources.GetObject("VersionPic.Image");
+            VersionPic.Location = new Point(3, 19);
+            VersionPic.Name = "VersionPic";
+            VersionPic.Size = new Size(420, 70);
+            VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
+            VersionPic.TabIndex = 0;
+            VersionPic.TabStop = false;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(richTextBox1);
+            groupBox4.Controls.Add(VersionPic);
+            groupBox4.Location = new Point(6, 6);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(426, 194);
+            groupBox4.TabIndex = 1;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "关于 EggyUI";
+            // 
+            // richTextBox1
+            // 
+            richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.Dock = DockStyle.Fill;
+            richTextBox1.Location = new Point(3, 89);
+            richTextBox1.Name = "richTextBox1";
+            richTextBox1.Size = new Size(420, 102);
+            richTextBox1.TabIndex = 1;
+            richTextBox1.Text = "EggyUI 当前版本：v3.5\nby EggyUI 项目组";
+            // 
+            // groupBox5
+            // 
+            groupBox5.Location = new Point(6, 206);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(426, 358);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "EggyUI 相关链接";
             // 
             // Settings_Window
             // 
@@ -280,6 +342,9 @@
             ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)VersionPic).EndInit();
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -304,5 +369,10 @@
         private Button OpenStartAllBackSettings;
         private Button OpenPersonalizationSettings;
         private Button OpenControl;
+        private Button InstallRainmeterSkin;
+        private PictureBox VersionPic;
+        private GroupBox groupBox4;
+        private RichTextBox richTextBox1;
+        private GroupBox groupBox5;
     }
 }

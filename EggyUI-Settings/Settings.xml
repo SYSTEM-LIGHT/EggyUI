@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
+<!-- 如果对应的软件安装被安装到了其它目录，请修改此XML文件内的对应路径 -->
 <Settings>
   <RainmeterPath>L:\EggyCore\Rainmeter</RainmeterPath>
   <RainmeterSkinPath>%USERPROFILE%\Documents\Rainmeter\Skins</RainmeterSkinPath>
