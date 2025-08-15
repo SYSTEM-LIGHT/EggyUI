@@ -67,7 +67,7 @@ namespace EggyUI_Settings
             // 创建默认配置文件
             try
             {
-                XDocument doc = new XDocument(
+                XDocument doc = new(
                     new XDeclaration("1.0", "utf-8", "yes"),
                     new XElement("Settings",
                         new XElement("RainmeterPath", @"C:\Windows\EggyCore\Rainmeter"),

@@ -46,13 +46,16 @@
             InstallRainmeterSkin = new Button();
             ResetRainmeterConfig = new Button();
             OpenRainmeterSkinFolder = new Button();
-            checkBox1 = new CheckBox();
+            CheckRainmeterStartup = new CheckBox();
             OpenRainmeterFolder = new Button();
             tabPage2 = new TabPage();
-            VersionPic = new PictureBox();
-            groupBox4 = new GroupBox();
-            richTextBox1 = new RichTextBox();
             groupBox5 = new GroupBox();
+            button3 = new Button();
+            JoinEggyUIGroup = new Button();
+            VisitEggyUIBiliBili = new Button();
+            groupBox4 = new GroupBox();
+            VersionInfoText = new RichTextBox();
+            VersionPic = new PictureBox();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -60,8 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)FolderBackgroundPic).BeginInit();
             groupBox1.SuspendLayout();
             tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)VersionPic).BeginInit();
+            groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)VersionPic).BeginInit();
             SuspendLayout();
             // 
             // tabControl1
@@ -210,7 +214,7 @@
             groupBox1.Controls.Add(InstallRainmeterSkin);
             groupBox1.Controls.Add(ResetRainmeterConfig);
             groupBox1.Controls.Add(OpenRainmeterSkinFolder);
-            groupBox1.Controls.Add(checkBox1);
+            groupBox1.Controls.Add(CheckRainmeterStartup);
             groupBox1.Controls.Add(OpenRainmeterFolder);
             groupBox1.Location = new Point(8, 6);
             groupBox1.Name = "groupBox1";
@@ -249,16 +253,16 @@
             OpenRainmeterSkinFolder.UseVisualStyleBackColor = true;
             OpenRainmeterSkinFolder.Click += RainmeterSettingsButton_Click;
             // 
-            // checkBox1
+            // CheckRainmeterStartup
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 22);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(138, 21);
-            checkBox1.TabIndex = 1;
-            checkBox1.Text = "开机启动 Rainmeter";
-            checkBox1.UseVisualStyleBackColor = true;
-            checkBox1.CheckedChanged += checkBox1_CheckedChanged;
+            CheckRainmeterStartup.AutoSize = true;
+            CheckRainmeterStartup.Location = new Point(6, 22);
+            CheckRainmeterStartup.Name = "CheckRainmeterStartup";
+            CheckRainmeterStartup.Size = new Size(138, 21);
+            CheckRainmeterStartup.TabIndex = 1;
+            CheckRainmeterStartup.Text = "开机启动 Rainmeter";
+            CheckRainmeterStartup.UseVisualStyleBackColor = true;
+            CheckRainmeterStartup.CheckedChanged += CheckRainmeterStartup_CheckedChanged;
             // 
             // OpenRainmeterFolder
             // 
@@ -282,6 +286,68 @@
             tabPage2.Text = "关于EggyUI";
             tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(button3);
+            groupBox5.Controls.Add(JoinEggyUIGroup);
+            groupBox5.Controls.Add(VisitEggyUIBiliBili);
+            groupBox5.Location = new Point(6, 344);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(426, 220);
+            groupBox5.TabIndex = 2;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "EggyUI 相关链接";
+            // 
+            // button3
+            // 
+            button3.Location = new Point(6, 68);
+            button3.Name = "button3";
+            button3.Size = new Size(204, 40);
+            button3.TabIndex = 9;
+            button3.Text = "访问 EggyUI 官网";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // JoinEggyUIGroup
+            // 
+            JoinEggyUIGroup.Location = new Point(216, 22);
+            JoinEggyUIGroup.Name = "JoinEggyUIGroup";
+            JoinEggyUIGroup.Size = new Size(204, 40);
+            JoinEggyUIGroup.TabIndex = 8;
+            JoinEggyUIGroup.Text = "加入 EggyUI 交流群";
+            JoinEggyUIGroup.UseVisualStyleBackColor = true;
+            JoinEggyUIGroup.Click += EggyUILinkButtonClick;
+            // 
+            // VisitEggyUIBiliBili
+            // 
+            VisitEggyUIBiliBili.Location = new Point(6, 22);
+            VisitEggyUIBiliBili.Name = "VisitEggyUIBiliBili";
+            VisitEggyUIBiliBili.Size = new Size(204, 40);
+            VisitEggyUIBiliBili.TabIndex = 7;
+            VisitEggyUIBiliBili.Text = "访问 EggyUI 官方B站";
+            VisitEggyUIBiliBili.UseVisualStyleBackColor = true;
+            VisitEggyUIBiliBili.Click += EggyUILinkButtonClick;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(VersionInfoText);
+            groupBox4.Controls.Add(VersionPic);
+            groupBox4.Location = new Point(6, 6);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(426, 194);
+            groupBox4.TabIndex = 1;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "关于 EggyUI";
+            // 
+            // VersionInfoText
+            // 
+            VersionInfoText.BorderStyle = BorderStyle.None;
+            VersionInfoText.Dock = DockStyle.Fill;
+            VersionInfoText.Location = new Point(3, 89);
+            VersionInfoText.Name = "VersionInfoText";
+            VersionInfoText.Size = new Size(420, 102);
+            VersionInfoText.TabIndex = 1;
+            VersionInfoText.Text = "EggyUI 当前版本：v3.5\nby EggyUI 项目组";
+            // 
             // VersionPic
             // 
             VersionPic.Dock = DockStyle.Top;
@@ -292,36 +358,6 @@
             VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
             VersionPic.TabIndex = 0;
             VersionPic.TabStop = false;
-            // 
-            // groupBox4
-            // 
-            groupBox4.Controls.Add(richTextBox1);
-            groupBox4.Controls.Add(VersionPic);
-            groupBox4.Location = new Point(6, 6);
-            groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(426, 194);
-            groupBox4.TabIndex = 1;
-            groupBox4.TabStop = false;
-            groupBox4.Text = "关于 EggyUI";
-            // 
-            // richTextBox1
-            // 
-            richTextBox1.BorderStyle = BorderStyle.None;
-            richTextBox1.Dock = DockStyle.Fill;
-            richTextBox1.Location = new Point(3, 89);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(420, 102);
-            richTextBox1.TabIndex = 1;
-            richTextBox1.Text = "EggyUI 当前版本：v3.5\nby EggyUI 项目组";
-            // 
-            // groupBox5
-            // 
-            groupBox5.Location = new Point(6, 206);
-            groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(426, 358);
-            groupBox5.TabIndex = 2;
-            groupBox5.TabStop = false;
-            groupBox5.Text = "EggyUI 相关链接";
             // 
             // Settings_Window
             // 
@@ -343,8 +379,9 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)VersionPic).EndInit();
+            groupBox5.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)VersionPic).EndInit();
             ResumeLayout(false);
         }
 
@@ -359,7 +396,7 @@
         private Button OpenRainmeterFolder;
         private Button ResetRainmeterConfig;
         private Button OpenRainmeterSkinFolder;
-        private CheckBox checkBox1;
+        private CheckBox CheckRainmeterStartup;
         private Button EnableFBG;
         private Button DisableFBG;
         private Button OpenFBGImageFolder;
@@ -372,7 +409,10 @@
         private Button InstallRainmeterSkin;
         private PictureBox VersionPic;
         private GroupBox groupBox4;
-        private RichTextBox richTextBox1;
+        private RichTextBox VersionInfoText;
         private GroupBox groupBox5;
+        private Button button3;
+        private Button JoinEggyUIGroup;
+        private Button VisitEggyUIBiliBili;
     }
 }
