@@ -9,7 +9,7 @@ namespace EggyUI_Settings
     /// <summary>
     /// 配置服务的实现类
     /// </summary>
-    public class ConfigurationService : IConfigurationService
+    public class ConfigurationService
     {
         private readonly string configFilePath;
 

@@ -1,5 +1,4 @@
 // Author：一只野生的蛋小绿_Minty（https://space.bilibili.com/1591761987）
-// 注意：此设置程序已使用接口进行重构，以提高代码的可维护性和可测试性。
 
 using Microsoft.Win32;
 using System.Diagnostics;
@@ -12,7 +11,7 @@ namespace EggyUI_Settings
 {
     public partial class Settings_Window : Form
     {
-        private readonly IConfigurationService _configurationService;
+        private readonly ConfigurationService _configurationService;
 
         public Settings_Window()
         {
