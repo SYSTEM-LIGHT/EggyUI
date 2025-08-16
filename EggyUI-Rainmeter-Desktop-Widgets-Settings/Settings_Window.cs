@@ -30,8 +30,8 @@ namespace ERWS
         /// <summary>
         /// home.ini默认内容。
         /// </summary>
-        private static readonly string[] DefaultConfigLines = new[]
-        {
+        private static readonly string[] DefaultConfigLines =
+        [
             "[Rainmeter]",
             "Update=1000",
             "Logging=0",
@@ -71,7 +71,7 @@ namespace ERWS
             ";将Text=后面的内容修改为您的用户名",
             "LeftMouseUpAction=[\"%USERPROFILE%\\Documents\\Rainmeter\\Skins\\EggyUI\\Home\\ERWS.exe\"]",
             ""
-        };
+        ];
         #endregion
 
         public Settings_Window() // 构造函数
@@ -265,7 +265,7 @@ namespace ERWS
 
                 // 使用File.Create创建文件
                 using (FileStream fs = File.Create(ConfigFileName))
-                using (StreamWriter writer = new StreamWriter(fs, Encoding.Unicode))
+                using (StreamWriter writer = new(fs, Encoding.Unicode))
                 {
                     foreach (string line in lines)
                     {
@@ -379,7 +379,7 @@ namespace ERWS
             {
                 // 使用File.Create创建文件并写入内容
                 using (FileStream fs = File.Create(ConfigFileName))
-                using (StreamWriter writer = new StreamWriter(fs, Encoding.Unicode))
+                using (StreamWriter writer = new(fs, Encoding.Unicode))
                 {
                     foreach (string line in DefaultConfigLines)
                     {

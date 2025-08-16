@@ -2,7 +2,7 @@
 // 这个程序的所有代码都严格按照.NET 8的标准编写，采用了该版本中诸多现代语法特性，
 // 以保证代码具备更高的可读性、简洁性和性能，同时也紧跟最新的.NET开发趋势。
 // 这是我第一次接这个项目，所以代码质量可能不是很高，但是我会努力改进的。
-// 另外，这个程序使用了一些异步方法（有但不多），以提高程序的响应性能。
+// 另外，这个程序使用了一些线程来提高程序的响应性能。
 // 不得不说GitHub的响应速度是真的慢，有时候我想提交更改都提交不了，我只能等它响应了才知道是否提交成功。
 
 using Microsoft.Win32;
@@ -120,25 +120,7 @@ namespace EggyUI_Settings
             }
         }
 
-        private static async Task<string> VersionInfo() // 加载版本信息
-        {
-            if (File.Exists(VersionInfoFile))
-            {
-                try
-                {
-                    return await File.ReadAllTextAsync(VersionInfoFile);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"读取版本信息文件时发生错误：{ex.Message}");
-                    return string.Empty;
-                }
-            }
-            return string.Empty;
-        }
-
-        // 窗口加载事件函数我改成了异步，以提高程序的响应性能
-        private async void Settings_Window_Load(object sender, EventArgs e)
+        private void Settings_Window_Load(object sender, EventArgs e)
         {
             // 加载版本图片
             string VersionImage = Path.Combine(ArtWorkPath, "EggyUI_Version.png");
@@ -150,11 +132,26 @@ namespace EggyUI_Settings
             OpenStart11Settings.Enabled = File.Exists(Path.Combine(Start11Path, "Start11Config.exe"));
             // 检测Rainmeter计划任务是否存在
             CheckRainmeterStartup.Checked = TaskExists("EggyUIWidgets");
-            // 调用异步方法获取版本信息并更新文本框
-            if (File.Exists(VersionInfoFile))
+            // 使用线程异步读取版本信息文件
+            // 这里使用了异步线程是为了避免阻塞UI线程，提高响应速度
+            // 另外这里用new()创建线程而不是用new Thread()创建线程，这是因为new()是.NET 8的新特性，
+            // 借助编译器的类型推断能力，能根据变量声明自动推断出具体类型，使代码更加简洁易读，
+            // 同时减少了冗余的类型声明，符合本程序采用.NET 8现代语法特性的开发标准。
+            Thread trd = new(() =>
             {
-                VersionInfoText.Text = await VersionInfo();
-            }
+                if (File.Exists(VersionInfoFile))
+                {
+                    try
+                    {
+                        VersionInfoText.Text = File.ReadAllText(VersionInfoFile);
+                    }
+                    catch (Exception ex)
+                    {
+                        Debug.WriteLine($"读取版本信息文件时发生错误：{ex.Message}");
+                    }
+                }
+            });
+            trd.Start();
         }
 
         private void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
