@@ -56,6 +56,7 @@
             groupBox4 = new GroupBox();
             VersionInfoText = new RichTextBox();
             VersionPic = new PictureBox();
+            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -288,6 +289,7 @@
             // 
             // groupBox5
             // 
+            groupBox5.Controls.Add(button1);
             groupBox5.Controls.Add(button3);
             groupBox5.Controls.Add(JoinEggyUIGroup);
             groupBox5.Controls.Add(VisitEggyUIBiliBili);
@@ -323,7 +325,7 @@
             VisitEggyUIBiliBili.Name = "VisitEggyUIBiliBili";
             VisitEggyUIBiliBili.Size = new Size(204, 40);
             VisitEggyUIBiliBili.TabIndex = 7;
-            VisitEggyUIBiliBili.Text = "访问 EggyUI 官方B站";
+            VisitEggyUIBiliBili.Text = "EggyUI 官方B站账号";
             VisitEggyUIBiliBili.UseVisualStyleBackColor = true;
             VisitEggyUIBiliBili.Click += EggyUILinkButtonClick;
             // 
@@ -340,6 +342,7 @@
             // 
             // VersionInfoText
             // 
+            VersionInfoText.BackColor = SystemColors.Window;
             VersionInfoText.BorderStyle = BorderStyle.None;
             VersionInfoText.Dock = DockStyle.Fill;
             VersionInfoText.Location = new Point(3, 89);
@@ -358,6 +361,15 @@
             VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
             VersionPic.TabIndex = 0;
             VersionPic.TabStop = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(219, 68);
+            button1.Name = "button1";
+            button1.Size = new Size(204, 40);
+            button1.TabIndex = 10;
+            button1.Text = "访问 EggyUI 官网";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Settings_Window
             // 
@@ -414,5 +426,6 @@
         private Button button3;
         private Button JoinEggyUIGroup;
         private Button VisitEggyUIBiliBili;
+        private Button button1;
     }
 }
