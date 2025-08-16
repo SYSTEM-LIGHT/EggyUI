@@ -50,13 +50,13 @@
             OpenRainmeterFolder = new Button();
             tabPage2 = new TabPage();
             groupBox5 = new GroupBox();
-            button3 = new Button();
+            VisitBSODMEMZWebsite = new Button();
+            VisitEggyUIWebsite = new Button();
             JoinEggyUIGroup = new Button();
             VisitEggyUIBiliBili = new Button();
             groupBox4 = new GroupBox();
             VersionInfoText = new RichTextBox();
             VersionPic = new PictureBox();
-            button1 = new Button();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             groupBox3.SuspendLayout();
@@ -289,25 +289,36 @@
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(button1);
-            groupBox5.Controls.Add(button3);
+            groupBox5.Controls.Add(VisitBSODMEMZWebsite);
+            groupBox5.Controls.Add(VisitEggyUIWebsite);
             groupBox5.Controls.Add(JoinEggyUIGroup);
             groupBox5.Controls.Add(VisitEggyUIBiliBili);
-            groupBox5.Location = new Point(6, 344);
+            groupBox5.Location = new Point(8, 447);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(426, 220);
+            groupBox5.Size = new Size(426, 115);
             groupBox5.TabIndex = 2;
             groupBox5.TabStop = false;
             groupBox5.Text = "EggyUI 相关链接";
             // 
-            // button3
+            // VisitBSODMEMZWebsite
             // 
-            button3.Location = new Point(6, 68);
-            button3.Name = "button3";
-            button3.Size = new Size(204, 40);
-            button3.TabIndex = 9;
-            button3.Text = "访问 EggyUI 官网";
-            button3.UseVisualStyleBackColor = true;
+            VisitBSODMEMZWebsite.Location = new Point(219, 68);
+            VisitBSODMEMZWebsite.Name = "VisitBSODMEMZWebsite";
+            VisitBSODMEMZWebsite.Size = new Size(204, 40);
+            VisitBSODMEMZWebsite.TabIndex = 10;
+            VisitBSODMEMZWebsite.Text = "访问 BSOD-MEMZ 的官方网站";
+            VisitBSODMEMZWebsite.UseVisualStyleBackColor = true;
+            VisitBSODMEMZWebsite.Click += EggyUILinkButtonClick;
+            // 
+            // VisitEggyUIWebsite
+            // 
+            VisitEggyUIWebsite.Location = new Point(6, 68);
+            VisitEggyUIWebsite.Name = "VisitEggyUIWebsite";
+            VisitEggyUIWebsite.Size = new Size(204, 40);
+            VisitEggyUIWebsite.TabIndex = 9;
+            VisitEggyUIWebsite.Text = "访问 EggyUI 官网";
+            VisitEggyUIWebsite.UseVisualStyleBackColor = true;
+            VisitEggyUIWebsite.Click += EggyUILinkButtonClick;
             // 
             // JoinEggyUIGroup
             // 
@@ -333,9 +344,9 @@
             // 
             groupBox4.Controls.Add(VersionInfoText);
             groupBox4.Controls.Add(VersionPic);
-            groupBox4.Location = new Point(6, 6);
+            groupBox4.Location = new Point(8, 6);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(426, 194);
+            groupBox4.Size = new Size(426, 435);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "关于 EggyUI";
@@ -347,7 +358,8 @@
             VersionInfoText.Dock = DockStyle.Fill;
             VersionInfoText.Location = new Point(3, 89);
             VersionInfoText.Name = "VersionInfoText";
-            VersionInfoText.Size = new Size(420, 102);
+            VersionInfoText.ReadOnly = true;
+            VersionInfoText.Size = new Size(420, 343);
             VersionInfoText.TabIndex = 1;
             VersionInfoText.Text = "EggyUI 当前版本：v3.5\nby EggyUI 项目组";
             // 
@@ -361,15 +373,6 @@
             VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
             VersionPic.TabIndex = 0;
             VersionPic.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(219, 68);
-            button1.Name = "button1";
-            button1.Size = new Size(204, 40);
-            button1.TabIndex = 10;
-            button1.Text = "访问 EggyUI 官网";
-            button1.UseVisualStyleBackColor = true;
             // 
             // Settings_Window
             // 
@@ -423,9 +426,9 @@
         private GroupBox groupBox4;
         private RichTextBox VersionInfoText;
         private GroupBox groupBox5;
-        private Button button3;
+        private Button VisitEggyUIWebsite;
         private Button JoinEggyUIGroup;
         private Button VisitEggyUIBiliBili;
-        private Button button1;
+        private Button VisitBSODMEMZWebsite;
     }
 }

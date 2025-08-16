@@ -16,6 +16,8 @@ namespace EggyUI_Settings
 {
     public partial class Settings_Window : Form
     {
+        #region 变量、方法
+
         private readonly ConfigurationService _configurationService;
 
         public Settings_Window()
@@ -114,11 +116,62 @@ namespace EggyUI_Settings
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"加载图片时发生错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(
+                            $"加载图片时发生错误：{ex.Message}",
+                            "错误",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
                     }
                 }
             }
         }
+
+        /// <summary>
+        /// 通用按钮点击处理器
+        /// </summary>
+        /// <param name="sender">按钮对象</param>
+        /// <param name="pathMap">路径字典</param>
+        /// <param name="errorMsgMap">错误信息字典</param>
+        /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param>
+        private static void ButtonClickHandler(
+            object sender,
+            Dictionary<string, string> pathMap, // 路径字典
+            Dictionary<string, string> errorMsgMap, // 错误信息字典
+            Dictionary<string, string>? argumentsMap = null // 参数字典（可选，不填默认设置为空）
+            )
+        {
+            Button btn = (Button)sender;
+            try
+            {
+                string fileName = pathMap.TryGetValue(btn.Name, out string? value)
+                    ? value : pathMap["default"];
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = fileName,
+                    Arguments = argumentsMap is not null
+                    ? (argumentsMap.TryGetValue(btn.Name, out string? value1)
+                    ? value1 : argumentsMap["default"])
+                    : "",
+                    UseShellExecute = true
+                });
+            }
+            catch (Exception ex)
+            {
+                string errorMsg = errorMsgMap.TryGetValue(btn.Name, out string? msg)
+                    ? msg : errorMsgMap["default"];
+                MessageBox.Show(
+                    string.Format(errorMsg, ex.Message),
+                    "错误",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
+            }
+        }
+
+        #endregion
+
+        #region 事件处理程序
 
         private void Settings_Window_Load(object sender, EventArgs e)
         {
@@ -127,6 +180,8 @@ namespace EggyUI_Settings
             if (File.Exists(VersionImage)) VersionPic.Image = Image.FromFile(VersionImage);
             // 加载文件夹背景预览图
             ReloadFolderBackgroundPic();
+            // 检测Rainmeter重置程序是否存在
+            ResetRainmeterConfig.Enabled = File.Exists(Path.Combine(RainmeterPath, "ResetRainmeter.exe"));
             // 检测开始菜单修改软件是否存在
             OpenStartAllBackSettings.Enabled = File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"));
             OpenStart11Settings.Enabled = File.Exists(Path.Combine(Start11Path, "Start11Config.exe"));
@@ -163,47 +218,24 @@ namespace EggyUI_Settings
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = "schtasks",
-                    Arguments = box.Checked && !TaskExists("EggyUIWidgets") ? $"/create /tn EggyUIWidgets /sc onlogon /tr \"{Path.Combine(RainmeterPath, "Rainmeter.exe")}\" /f" : "/delete /tn EggyUIWidgets /f",
+                    // 这里是一个条件表达式，被我换行成了多行，
+                    // 目的是为了提高代码的可读性，使代码更易维护
+                    Arguments = box.Checked
+                        && !TaskExists("EggyUIWidgets") 
+                        ? $"/create /tn EggyUIWidgets /sc onlogon /tr \"{Path.Combine(RainmeterPath, "Rainmeter.exe")}\" /f" 
+                        : "/delete /tn EggyUIWidgets /f",
                     CreateNoWindow = true, // 无窗口创建进程
                     UseShellExecute = false
                 });
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"设置Rainmeter开机启动时发生错误：{ex.Message}", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        // 通用按钮点击处理器
-        /// <summary>
-        /// 通用按钮点击处理器
-        /// </summary>
-        /// <param name="sender">按钮对象</param>
-        /// <param name="pathMap">路径字典</param>
-        /// <param name="errorMsgMap">错误信息字典</param>
-        /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param>
-        private static void ButtonClickHandler(
-            object sender,
-            Dictionary<string, string> pathMap, // 路径字典
-            Dictionary<string, string> errorMsgMap, // 错误信息字典
-            Dictionary<string, string>? argumentsMap = null // 参数字典（可选，不填默认设置为空）
-            )
-        {
-            Button btn = (Button)sender;
-            try
-            {
-                string fileName = pathMap.TryGetValue(btn.Name, out string? value) ? value : pathMap["default"];
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = fileName,
-                    Arguments = argumentsMap is not null ? (argumentsMap.TryGetValue(btn.Name, out string? value1) ? value1 : argumentsMap["default"]) : "",
-                    UseShellExecute = true
-                });
-            }
-            catch (Exception ex)
-            {
-                string errorMsg = errorMsgMap.TryGetValue(btn.Name, out string? msg) ? msg : errorMsgMap["default"];
-                MessageBox.Show(string.Format(errorMsg, ex.Message), "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    $"设置Rainmeter开机启动时发生错误：{ex.Message}",
+                    "错误",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                    );
             }
         }
 
@@ -288,16 +320,22 @@ namespace EggyUI_Settings
             Dictionary<string, string> pathMap = new()
             {
                 {"VisitEggyUIBiliBili", "https://space.bilibili.com/3546563248916693"},
-                {"default", "https://eggyui.neocities.org/support"}
+                {"JoinEggyUIGroup", "https://eggyui.neocities.org/support"},
+                {"VisitEggyUIWebsite", "https://eggyui.neocities.org/support"},
+                {"default", "https://xxtsoft.top/"}
             };
 
             Dictionary<string, string> errorMsgMap = new()
             {
                 {"VisitEggyUIBiliBili", "访问EggyUI官方B站主页时发生错误：{0}"},
-                {"default", "访问EggyUI交流群加群页面时发生错误：{0}"}
+                {"JoinEggyUIGroup", "访问EggyUI交流群加群页面时发生错误：{0}"},
+                {"VisitEggyUIWebsite", "访问EggyUI官网时发生错误：{0}"},
+                {"default", "访问BSOD-MEMZ的个人网站时发生错误：{0}"}
             };
 
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
+
+        #endregion
     }
 }

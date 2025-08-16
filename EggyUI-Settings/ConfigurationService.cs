@@ -39,15 +39,15 @@ namespace EggyUI_Settings
                 XDocument doc = XDocument.Load(configFilePath);
                 RainmeterPath = doc.Root?.Element("RainmeterPath")?.Value ?? @"C:\Windows\EggyCore\Rainmeter";
                 RainmeterSkinPath = doc.Root?.Element("RainmeterSkinPath")?.Value?.Replace("%USERPROFILE%",
-                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile)) ??
-                    Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
+                    Environment.GetFolderPath(Environment.SpecialFolder.UserProfile))
+                    ?? Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal),
                     @"Rainmeter\Skins");
-                FolderBackgroundPath = doc.Root?.Element("FolderBackgroundPath")?.Value ??
-                    @"C:\Windows\EggyCore\FolderBackground";
-                StartAllBackPath = doc.Root?.Element("StartAllBackPath")?.Value ??
-                    @"C:\Program Files\StartAllBack";
-                Start11Path = doc.Root?.Element("Start11Path")?.Value ??
-                    @"C:\Program Files (x86)\Stardock\Start11";
+                FolderBackgroundPath = doc.Root?.Element("FolderBackgroundPath")?.Value
+                    ?? @"C:\Windows\EggyCore\FolderBackground";
+                StartAllBackPath = doc.Root?.Element("StartAllBackPath")?.Value
+                    ?? @"C:\Program Files\StartAllBack";
+                Start11Path = doc.Root?.Element("Start11Path")?.Value
+                    ?? @"C:\Program Files (x86)\Stardock\Start11";
             }
             catch (Exception ex)
             {
