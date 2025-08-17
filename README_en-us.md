@@ -2,6 +2,8 @@
 
 [简体中文](README.md) | **English**
 
+If you find GitHub access slow in China, you can check out its Gitee page: [https://gitee.com/system-light/EggyUI/tree/master/](https://gitee.com/system-light/EggyUI/tree/master/)
+
 ## 🎮 Project Introduction
 EggyUI is a customization theme pack designed exclusively for Windows desktop.
 

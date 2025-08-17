@@ -2,6 +2,8 @@
 
 **简体中文** | [English](README_en-us.md)
 
+如果你觉得GitHub在国内访问太慢，可以看看此项目在Gitee上的页面：[https://gitee.com/system-light/EggyUI/tree/master/](https://gitee.com/system-light/EggyUI/tree/master/)
+
 ## 🎮 项目简介
 EggyUI 是一款专为 Windows 桌面打造的美化主题包。
 
