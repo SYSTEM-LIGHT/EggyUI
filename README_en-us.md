@@ -105,4 +105,4 @@ Key Reaffirmations:
 *   Windows® is a registered trademark of Microsoft.
 *   This is an unofficial visual modification for personalized experiences, not a Microsoft product.
 
-![Eggy UI 3.5 Promotional Image](http://i0.hdslb.com/bfs/new_dyn/24cb54b93b1c9ef3ead8ea2d3ae2d2f31591761987.png "Eggy UI 3.5")
+![Eggy UI 3.5 Promotional Image](Promo.png "Eggy UI 3.5")

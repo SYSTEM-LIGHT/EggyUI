@@ -105,4 +105,4 @@ EggyUI 就是个给 Windows 桌面做美化的主题包，非商业性质，是�
 *   Windows 是微软的注册商标
 *   这只是在 Windows 系统上做的非官方视觉修改，就是想让大家用得更个性化，不代表微软的官方产品。
 
-![Eggy UI 3.5宣传图](http://i0.hdslb.com/bfs/new_dyn/24cb54b93b1c9ef3ead8ea2d3ae2d2f31591761987.png "Eggy UI 3.5")
+![Eggy UI 3.5宣传图](Promo.png "Eggy UI 3.5")
