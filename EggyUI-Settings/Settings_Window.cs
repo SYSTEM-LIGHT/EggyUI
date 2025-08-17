@@ -6,10 +6,11 @@
 // 不得不说GitHub的响应速度是真的慢，有时候我想提交更改都提交不了，我只能等它响应了才知道是否提交成功。
 
 using Microsoft.Win32;
-using System.Diagnostics;
-using System.IO;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace EggyUI_Settings
@@ -49,13 +50,7 @@ namespace EggyUI_Settings
         // 版本信息文件路径
         static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
 
-        // NT内核版本
-        static readonly int NTVersion = Environment.OSVersion.Version.Major;
-
-        // 系统内部版本
-        static readonly int BuildVersion = Environment.OSVersion.Version.Build;
-
-        public static bool TaskExists(string taskName)
+        static bool TaskExists(string taskName)
         {
             try
             {
@@ -189,13 +184,23 @@ namespace EggyUI_Settings
             // 加载文件夹背景预览图
             ReloadFolderBackgroundPic();
 
+            // 检测当前系统是否能够使用本地用户和组（一般家庭版不能用）
+            OpenLusrmgrMsc.Enabled =
+                !SystemVersionChecker.IsHomeEdition()
+                && (File.Exists(SpecialValue.LusrMgrMsc64bit)
+                || File.Exists(SpecialValue.LusrMgrMsc32bit));
+
+            // 检测当前系统是否能够使用组策略编辑器（家庭版可以通过特殊方法启用，所以这里不检测系统是不是家庭版）
+            OpenGpeditMsc.Enabled = File.Exists(SpecialValue.GpeditMsc64bit)
+                || File.Exists(SpecialValue.GpeditMsc32bit);
+
             // 检测开始菜单修改软件是否存在
             OpenStartAllBackSettings.Enabled =
                 File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"))
-                && !((NTVersion < 10) && (BuildVersion < 22000)); // 检测是否为Win11
+                && !((SpecialValue.NTVersion < 10) && (SpecialValue.BuildVersion < 22000)); // 检测是否为Win11
             OpenStart11Settings.Enabled =
                 File.Exists(Path.Combine(Start11Path, "Start11Config.exe"))
-                && !(NTVersion < 10); // 检测是否为Win10/Win11
+                && !(SpecialValue.NTVersion < 10); // 检测是否为Win10/Win11
 
             // 检测Rainmeter计划任务是否存在
             CheckRainmeterStartup.Checked = TaskExists("EggyUIWidgets");
@@ -339,7 +344,9 @@ namespace EggyUI_Settings
                 { "OpenStartAllBackSettings", Path.Combine(StartAllBackPath, "StartAllBackCfg.exe") },
                 { "OpenStart11Settings", Path.Combine(Start11Path, "Start11Config.exe") },
                 { "OpenPersonalizationSettings", "ms-settings:personalization" },
-                { "default", "control" }
+                { "default", "control" },
+                { "OpenGpeditMsc", File.Exists(SpecialValue.GpeditMsc64bit) ? SpecialValue.GpeditMsc64bit : SpecialValue.GpeditMsc32bit },
+                { "OpenLusrmgrMsc", File.Exists(SpecialValue.LusrMgrMsc64bit) ? SpecialValue.LusrMgrMsc64bit : SpecialValue.LusrMgrMsc32bit }
             };
 
             // 错误信息列表
@@ -348,7 +355,10 @@ namespace EggyUI_Settings
                 { "OpenStartAllBackSettings", "打开StartAllBack设置时发生错误：{0}" },
                 { "OpenStart11Settings", "打开Start11设置时发生错误：{0}" },
                 { "OpenPersonalizationSettings", "打开系统个性化设置时发生错误：{0}" },
-                { "default", "打开控制面板时发生错误：{0}" }
+                { "default", "打开控制面板时发生错误：{0}" },
+                { "OpenGpeditMsc", "打开组策略编辑器时发生错误：{0}" },
+                { "OpenLusrMgrMsc", "打开本地用户和组时发生错误：{0}" },
+
             };
 
             ButtonClickHandler(sender, pathMap, errorMsgMap);

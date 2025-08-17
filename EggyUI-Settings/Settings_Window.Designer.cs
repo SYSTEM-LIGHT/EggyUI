@@ -32,6 +32,8 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             groupBox3 = new GroupBox();
+            OpenLusrmgrMsc = new Button();
+            OpenGpeditMsc = new Button();
             OpenControl = new Button();
             OpenPersonalizationSettings = new Button();
             OpenStart11Settings = new Button();
@@ -75,7 +77,7 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(4, 4, 4, 4);
+            tabControl1.Margin = new Padding(4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(579, 706);
@@ -87,9 +89,9 @@
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
             tabPage1.Location = new Point(4, 29);
-            tabPage1.Margin = new Padding(4, 4, 4, 4);
+            tabPage1.Margin = new Padding(4);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(4, 4, 4, 4);
+            tabPage1.Padding = new Padding(4);
             tabPage1.Size = new Size(571, 673);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "常规设置";
@@ -97,23 +99,47 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(OpenLusrmgrMsc);
+            groupBox3.Controls.Add(OpenGpeditMsc);
             groupBox3.Controls.Add(OpenControl);
             groupBox3.Controls.Add(OpenPersonalizationSettings);
             groupBox3.Controls.Add(OpenStart11Settings);
             groupBox3.Controls.Add(OpenStartAllBackSettings);
             groupBox3.Location = new Point(10, 386);
-            groupBox3.Margin = new Padding(4, 4, 4, 4);
+            groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4, 4, 4, 4);
+            groupBox3.Padding = new Padding(4);
             groupBox3.Size = new Size(548, 275);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "其它设置";
             // 
+            // OpenLusrmgrMsc
+            // 
+            OpenLusrmgrMsc.Location = new Point(278, 135);
+            OpenLusrmgrMsc.Margin = new Padding(4);
+            OpenLusrmgrMsc.Name = "OpenLusrmgrMsc";
+            OpenLusrmgrMsc.Size = new Size(262, 47);
+            OpenLusrmgrMsc.TabIndex = 11;
+            OpenLusrmgrMsc.Text = "打开本地用户和组";
+            OpenLusrmgrMsc.UseVisualStyleBackColor = true;
+            OpenLusrmgrMsc.Click += OtherSettingsButton_Click;
+            // 
+            // OpenGpeditMsc
+            // 
+            OpenGpeditMsc.Location = new Point(8, 135);
+            OpenGpeditMsc.Margin = new Padding(4);
+            OpenGpeditMsc.Name = "OpenGpeditMsc";
+            OpenGpeditMsc.Size = new Size(262, 47);
+            OpenGpeditMsc.TabIndex = 10;
+            OpenGpeditMsc.Text = "打开组策略编辑器";
+            OpenGpeditMsc.UseVisualStyleBackColor = true;
+            OpenGpeditMsc.Click += OtherSettingsButton_Click;
+            // 
             // OpenControl
             // 
             OpenControl.Location = new Point(278, 80);
-            OpenControl.Margin = new Padding(4, 4, 4, 4);
+            OpenControl.Margin = new Padding(4);
             OpenControl.Name = "OpenControl";
             OpenControl.Size = new Size(262, 47);
             OpenControl.TabIndex = 9;
@@ -124,7 +150,7 @@
             // OpenPersonalizationSettings
             // 
             OpenPersonalizationSettings.Location = new Point(8, 80);
-            OpenPersonalizationSettings.Margin = new Padding(4, 4, 4, 4);
+            OpenPersonalizationSettings.Margin = new Padding(4);
             OpenPersonalizationSettings.Name = "OpenPersonalizationSettings";
             OpenPersonalizationSettings.Size = new Size(262, 47);
             OpenPersonalizationSettings.TabIndex = 8;
@@ -135,7 +161,7 @@
             // OpenStart11Settings
             // 
             OpenStart11Settings.Location = new Point(278, 26);
-            OpenStart11Settings.Margin = new Padding(4, 4, 4, 4);
+            OpenStart11Settings.Margin = new Padding(4);
             OpenStart11Settings.Name = "OpenStart11Settings";
             OpenStart11Settings.Size = new Size(262, 47);
             OpenStart11Settings.TabIndex = 7;
@@ -146,7 +172,7 @@
             // OpenStartAllBackSettings
             // 
             OpenStartAllBackSettings.Location = new Point(8, 26);
-            OpenStartAllBackSettings.Margin = new Padding(4, 4, 4, 4);
+            OpenStartAllBackSettings.Margin = new Padding(4);
             OpenStartAllBackSettings.Name = "OpenStartAllBackSettings";
             OpenStartAllBackSettings.Size = new Size(262, 47);
             OpenStartAllBackSettings.TabIndex = 6;
@@ -162,9 +188,9 @@
             groupBox2.Controls.Add(DisableFBG);
             groupBox2.Controls.Add(EnableFBG);
             groupBox2.Location = new Point(10, 185);
-            groupBox2.Margin = new Padding(4, 4, 4, 4);
+            groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Padding = new Padding(4);
             groupBox2.Size = new Size(548, 194);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
@@ -173,7 +199,7 @@
             // ReloadFolderBackgroundPicButton
             // 
             ReloadFolderBackgroundPicButton.Location = new Point(8, 134);
-            ReloadFolderBackgroundPicButton.Margin = new Padding(4, 4, 4, 4);
+            ReloadFolderBackgroundPicButton.Margin = new Padding(4);
             ReloadFolderBackgroundPicButton.Name = "ReloadFolderBackgroundPicButton";
             ReloadFolderBackgroundPicButton.Size = new Size(213, 47);
             ReloadFolderBackgroundPicButton.TabIndex = 5;
@@ -185,7 +211,7 @@
             // 
             FolderBackgroundPic.Image = (Image)resources.GetObject("FolderBackgroundPic.Image");
             FolderBackgroundPic.Location = new Point(229, 26);
-            FolderBackgroundPic.Margin = new Padding(4, 4, 4, 4);
+            FolderBackgroundPic.Margin = new Padding(4);
             FolderBackgroundPic.Name = "FolderBackgroundPic";
             FolderBackgroundPic.Size = new Size(311, 155);
             FolderBackgroundPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -195,7 +221,7 @@
             // OpenFBGImageFolder
             // 
             OpenFBGImageFolder.Location = new Point(8, 80);
-            OpenFBGImageFolder.Margin = new Padding(4, 4, 4, 4);
+            OpenFBGImageFolder.Margin = new Padding(4);
             OpenFBGImageFolder.Name = "OpenFBGImageFolder";
             OpenFBGImageFolder.Size = new Size(213, 47);
             OpenFBGImageFolder.TabIndex = 3;
@@ -206,7 +232,7 @@
             // DisableFBG
             // 
             DisableFBG.Location = new Point(118, 26);
-            DisableFBG.Margin = new Padding(4, 4, 4, 4);
+            DisableFBG.Margin = new Padding(4);
             DisableFBG.Name = "DisableFBG";
             DisableFBG.Size = new Size(103, 47);
             DisableFBG.TabIndex = 2;
@@ -217,7 +243,7 @@
             // EnableFBG
             // 
             EnableFBG.Location = new Point(8, 26);
-            EnableFBG.Margin = new Padding(4, 4, 4, 4);
+            EnableFBG.Margin = new Padding(4);
             EnableFBG.Name = "EnableFBG";
             EnableFBG.Size = new Size(103, 47);
             EnableFBG.TabIndex = 1;
@@ -233,9 +259,9 @@
             groupBox1.Controls.Add(CheckRainmeterStartup);
             groupBox1.Controls.Add(OpenRainmeterFolder);
             groupBox1.Location = new Point(10, 7);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Padding = new Padding(4);
             groupBox1.Size = new Size(548, 171);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
@@ -244,7 +270,7 @@
             // InstallRainmeterSkin
             // 
             InstallRainmeterSkin.Location = new Point(8, 112);
-            InstallRainmeterSkin.Margin = new Padding(4, 4, 4, 4);
+            InstallRainmeterSkin.Margin = new Padding(4);
             InstallRainmeterSkin.Name = "InstallRainmeterSkin";
             InstallRainmeterSkin.Size = new Size(262, 47);
             InstallRainmeterSkin.TabIndex = 4;
@@ -255,7 +281,7 @@
             // ResetRainmeterConfig
             // 
             ResetRainmeterConfig.Location = new Point(278, 112);
-            ResetRainmeterConfig.Margin = new Padding(4, 4, 4, 4);
+            ResetRainmeterConfig.Margin = new Padding(4);
             ResetRainmeterConfig.Name = "ResetRainmeterConfig";
             ResetRainmeterConfig.Size = new Size(262, 47);
             ResetRainmeterConfig.TabIndex = 3;
@@ -266,7 +292,7 @@
             // OpenRainmeterSkinFolder
             // 
             OpenRainmeterSkinFolder.Location = new Point(278, 58);
-            OpenRainmeterSkinFolder.Margin = new Padding(4, 4, 4, 4);
+            OpenRainmeterSkinFolder.Margin = new Padding(4);
             OpenRainmeterSkinFolder.Name = "OpenRainmeterSkinFolder";
             OpenRainmeterSkinFolder.Size = new Size(262, 47);
             OpenRainmeterSkinFolder.TabIndex = 2;
@@ -278,7 +304,7 @@
             // 
             CheckRainmeterStartup.AutoSize = true;
             CheckRainmeterStartup.Location = new Point(8, 26);
-            CheckRainmeterStartup.Margin = new Padding(4, 4, 4, 4);
+            CheckRainmeterStartup.Margin = new Padding(4);
             CheckRainmeterStartup.Name = "CheckRainmeterStartup";
             CheckRainmeterStartup.Size = new Size(170, 24);
             CheckRainmeterStartup.TabIndex = 1;
@@ -289,7 +315,7 @@
             // OpenRainmeterFolder
             // 
             OpenRainmeterFolder.Location = new Point(8, 58);
-            OpenRainmeterFolder.Margin = new Padding(4, 4, 4, 4);
+            OpenRainmeterFolder.Margin = new Padding(4);
             OpenRainmeterFolder.Name = "OpenRainmeterFolder";
             OpenRainmeterFolder.Size = new Size(262, 47);
             OpenRainmeterFolder.TabIndex = 0;
@@ -302,9 +328,9 @@
             tabPage2.Controls.Add(groupBox5);
             tabPage2.Controls.Add(groupBox4);
             tabPage2.Location = new Point(4, 29);
-            tabPage2.Margin = new Padding(4, 4, 4, 4);
+            tabPage2.Margin = new Padding(4);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(4, 4, 4, 4);
+            tabPage2.Padding = new Padding(4);
             tabPage2.Size = new Size(571, 673);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "关于EggyUI";
@@ -317,9 +343,9 @@
             groupBox5.Controls.Add(JoinEggyUIGroup);
             groupBox5.Controls.Add(VisitEggyUIBiliBili);
             groupBox5.Location = new Point(10, 526);
-            groupBox5.Margin = new Padding(4, 4, 4, 4);
+            groupBox5.Margin = new Padding(4);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(4, 4, 4, 4);
+            groupBox5.Padding = new Padding(4);
             groupBox5.Size = new Size(548, 135);
             groupBox5.TabIndex = 2;
             groupBox5.TabStop = false;
@@ -328,7 +354,7 @@
             // VisitBSODMEMZWebsite
             // 
             VisitBSODMEMZWebsite.Location = new Point(282, 80);
-            VisitBSODMEMZWebsite.Margin = new Padding(4, 4, 4, 4);
+            VisitBSODMEMZWebsite.Margin = new Padding(4);
             VisitBSODMEMZWebsite.Name = "VisitBSODMEMZWebsite";
             VisitBSODMEMZWebsite.Size = new Size(262, 47);
             VisitBSODMEMZWebsite.TabIndex = 10;
@@ -339,7 +365,7 @@
             // VisitEggyUIWebsite
             // 
             VisitEggyUIWebsite.Location = new Point(8, 80);
-            VisitEggyUIWebsite.Margin = new Padding(4, 4, 4, 4);
+            VisitEggyUIWebsite.Margin = new Padding(4);
             VisitEggyUIWebsite.Name = "VisitEggyUIWebsite";
             VisitEggyUIWebsite.Size = new Size(262, 47);
             VisitEggyUIWebsite.TabIndex = 9;
@@ -350,7 +376,7 @@
             // JoinEggyUIGroup
             // 
             JoinEggyUIGroup.Location = new Point(278, 26);
-            JoinEggyUIGroup.Margin = new Padding(4, 4, 4, 4);
+            JoinEggyUIGroup.Margin = new Padding(4);
             JoinEggyUIGroup.Name = "JoinEggyUIGroup";
             JoinEggyUIGroup.Size = new Size(262, 47);
             JoinEggyUIGroup.TabIndex = 8;
@@ -361,7 +387,7 @@
             // VisitEggyUIBiliBili
             // 
             VisitEggyUIBiliBili.Location = new Point(8, 26);
-            VisitEggyUIBiliBili.Margin = new Padding(4, 4, 4, 4);
+            VisitEggyUIBiliBili.Margin = new Padding(4);
             VisitEggyUIBiliBili.Name = "VisitEggyUIBiliBili";
             VisitEggyUIBiliBili.Size = new Size(262, 47);
             VisitEggyUIBiliBili.TabIndex = 7;
@@ -374,9 +400,9 @@
             groupBox4.Controls.Add(VersionInfoText);
             groupBox4.Controls.Add(VersionPic);
             groupBox4.Location = new Point(10, 7);
-            groupBox4.Margin = new Padding(4, 4, 4, 4);
+            groupBox4.Margin = new Padding(4);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(4, 4, 4, 4);
+            groupBox4.Padding = new Padding(4);
             groupBox4.Size = new Size(548, 512);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
@@ -388,7 +414,7 @@
             VersionInfoText.BorderStyle = BorderStyle.None;
             VersionInfoText.Dock = DockStyle.Fill;
             VersionInfoText.Location = new Point(4, 106);
-            VersionInfoText.Margin = new Padding(4, 4, 4, 4);
+            VersionInfoText.Margin = new Padding(4);
             VersionInfoText.Name = "VersionInfoText";
             VersionInfoText.ReadOnly = true;
             VersionInfoText.Size = new Size(540, 402);
@@ -400,7 +426,7 @@
             VersionPic.Dock = DockStyle.Top;
             VersionPic.Image = (Image)resources.GetObject("VersionPic.Image");
             VersionPic.Location = new Point(4, 24);
-            VersionPic.Margin = new Padding(4, 4, 4, 4);
+            VersionPic.Margin = new Padding(4);
             VersionPic.Name = "VersionPic";
             VersionPic.Size = new Size(540, 82);
             VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -414,7 +440,7 @@
             ClientSize = new Size(579, 706);
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Settings_Window";
@@ -464,5 +490,7 @@
         private Button JoinEggyUIGroup;
         private Button VisitEggyUIBiliBili;
         private Button VisitBSODMEMZWebsite;
+        private Button OpenGpeditMsc;
+        private Button OpenLusrmgrMsc;
     }
 }
