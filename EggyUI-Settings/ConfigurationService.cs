@@ -11,7 +11,7 @@ namespace EggyUI_Settings
     /// </summary>
     public class ConfigurationService
     {
-        private readonly string configFilePath;
+        readonly string configFilePath;
 
         public string RainmeterPath { get; set; } = string.Empty;
         public string RainmeterSkinPath { get; set; } = string.Empty;

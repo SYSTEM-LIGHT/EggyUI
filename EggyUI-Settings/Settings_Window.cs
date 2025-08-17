@@ -18,7 +18,7 @@ namespace EggyUI_Settings
     {
         #region 变量、方法
 
-        private readonly ConfigurationService _configurationService;
+        readonly ConfigurationService _configurationService;
 
         public Settings_Window()
         {
@@ -29,25 +29,31 @@ namespace EggyUI_Settings
         }
 
         // 获取Rainmeter路径
-        private string RainmeterPath => _configurationService.RainmeterPath;
+        string RainmeterPath => _configurationService.RainmeterPath;
 
         // 获取Rainmeter皮肤路径
-        private string RainmeterSkinPath => _configurationService.RainmeterSkinPath;
+        string RainmeterSkinPath => _configurationService.RainmeterSkinPath;
 
         // 获取文件夹背景目录
-        private string FolderBackgroundPath => _configurationService.FolderBackgroundPath;
+        string FolderBackgroundPath => _configurationService.FolderBackgroundPath;
 
         // 获取StartAllBack路径
-        private string StartAllBackPath => _configurationService.StartAllBackPath;
+        string StartAllBackPath => _configurationService.StartAllBackPath;
 
         // 获取Start11路径
-        private string Start11Path => _configurationService.Start11Path;
+        string Start11Path => _configurationService.Start11Path;
 
         // 贴图路径
-        private static readonly string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
+        static readonly string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
 
         // 版本信息文件路径
-        private static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
+        static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
+
+        // NT内核版本
+        static readonly int NTVersion = Environment.OSVersion.Version.Major;
+
+        // 系统内部版本
+        static readonly int BuildVersion = Environment.OSVersion.Version.Build;
 
         public static bool TaskExists(string taskName)
         {
@@ -84,7 +90,7 @@ namespace EggyUI_Settings
             }
         }
 
-        private void ReloadFolderBackgroundPic()
+        void ReloadFolderBackgroundPic()
         {
             // 刷新文件夹背景预览图片
             string imageFolder = Path.Combine(FolderBackgroundPath, "image");
@@ -134,7 +140,7 @@ namespace EggyUI_Settings
         /// <param name="pathMap">路径字典</param>
         /// <param name="errorMsgMap">错误信息字典</param>
         /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param>
-        private static void ButtonClickHandler(
+        static void ButtonClickHandler(
             object sender,
             Dictionary<string, string> pathMap, // 路径字典
             Dictionary<string, string> errorMsgMap, // 错误信息字典
@@ -173,26 +179,33 @@ namespace EggyUI_Settings
 
         #region 事件处理程序
 
-        private void Settings_Window_Load(object sender, EventArgs e)
+        // 方法的private其实是可写可不写的（不加可见性标识符的话，默认可见性就是private）
+        void Settings_Window_Load(object sender, EventArgs e)
         {
             // 加载版本图片
             string VersionImage = Path.Combine(ArtWorkPath, "EggyUI_Version.png");
             if (File.Exists(VersionImage)) VersionPic.Image = Image.FromFile(VersionImage);
+
             // 加载文件夹背景预览图
             ReloadFolderBackgroundPic();
-            // 检测Rainmeter重置程序是否存在
-            ResetRainmeterConfig.Enabled = File.Exists(Path.Combine(RainmeterPath, "ResetRainmeter.exe"));
+
             // 检测开始菜单修改软件是否存在
-            OpenStartAllBackSettings.Enabled = File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"));
-            OpenStart11Settings.Enabled = File.Exists(Path.Combine(Start11Path, "Start11Config.exe"));
+            OpenStartAllBackSettings.Enabled =
+                File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"))
+                && !((NTVersion < 10) && (BuildVersion < 22000)); // 检测是否为Win11
+            OpenStart11Settings.Enabled =
+                File.Exists(Path.Combine(Start11Path, "Start11Config.exe"))
+                && !(NTVersion < 10); // 检测是否为Win10/Win11
+
             // 检测Rainmeter计划任务是否存在
             CheckRainmeterStartup.Checked = TaskExists("EggyUIWidgets");
+
             // 使用线程异步读取版本信息文件
             // 这里使用了异步线程是为了避免阻塞UI线程，提高响应速度
             // 另外这里用new()创建线程而不是用new Thread()创建线程，这是因为new()是.NET 8的新特性，
             // 借助编译器的类型推断能力，能根据变量声明自动推断出具体类型，使代码更加简洁易读，
             // 同时减少了冗余的类型声明，符合本程序采用.NET 8现代语法特性的开发标准。
-            Thread trd = new(() =>
+            Thread ReadVersionFileThread = new(() =>
             {
                 if (File.Exists(VersionInfoFile))
                 {
@@ -206,10 +219,10 @@ namespace EggyUI_Settings
                     }
                 }
             });
-            trd.Start();
+            ReadVersionFileThread.Start();
         }
 
-        private void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
+        void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox box = (CheckBox)sender;
             try
@@ -239,7 +252,35 @@ namespace EggyUI_Settings
             }
         }
 
-        private void RainmeterSettingsButton_Click(object sender, EventArgs e)
+        void ResetRainmeterButton_Click(object sender, EventArgs e)
+        {
+            Thread ResetRainmeterThread = new(() =>
+            {
+                try
+                {
+                    ResetRainmeter reset = new(RainmeterPath);
+                    reset.Start();
+                    MessageBox.Show(
+                        "Rainmeter重置成功！",
+                        "提示",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                        );
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(
+                        $"重置Rainmeter时发生错误：{ex.Message}",
+                        "错误",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Error
+                        );
+                }
+            });
+            ResetRainmeterThread.Start();
+        }
+
+        void RainmeterSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             // 这里使用了 .NET 8 的现代语法特性 new() 来初始化字典，而非传统的 new Dictionary<string, string>。
@@ -249,8 +290,7 @@ namespace EggyUI_Settings
             {
                 { "OpenRainmeterFolder", RainmeterPath },
                 { "OpenRainmeterSkinFolder", RainmeterSkinPath },
-                { "InstallRainmeterSkin", Path.Combine(RainmeterPath, "SkinInstaller.exe") },
-                { "default", Path.Combine(RainmeterPath, "ResetRainmeter.exe") }
+                { "default", Path.Combine(RainmeterPath, "SkinInstaller.exe") },
             };
 
             // 错误信息列表
@@ -258,14 +298,13 @@ namespace EggyUI_Settings
             {
                 { "OpenRainmeterFolder", "打开Rainmeter文件夹时发生错误：{0}" },
                 { "OpenRainmeterSkinFolder", "打开Rainmeter皮肤文件夹时发生错误：{0}" },
-                { "InstallRainmeterSkin", "安装Rainmeter皮肤时发生错误：{0}" },
-                { "default", "重置Rainmeter时发生错误：{0}" }
+                { "default", "安装Rainmeter皮肤时发生错误：{0}" },
             };
 
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        private void FBGSettingsButton_Click(object sender, EventArgs e)
+        void FBGSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             Dictionary<string, string> pathMap = new()
@@ -286,13 +325,13 @@ namespace EggyUI_Settings
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        private void ReloadFolderBackgroundPicButton_Click(object sender, EventArgs e)
+        void ReloadFolderBackgroundPicButton_Click(object sender, EventArgs e)
         {
             // 刷新文件夹背景预览图片
             ReloadFolderBackgroundPic();
         }
 
-        private void OtherSettingsButton_Click(object sender, EventArgs e)
+        void OtherSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             Dictionary<string, string> pathMap = new()
@@ -315,7 +354,7 @@ namespace EggyUI_Settings
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        private void EggyUILinkButtonClick(object sender, EventArgs e)
+        void EggyUILinkButtonClick(object sender, EventArgs e)
         {
             Dictionary<string, string> pathMap = new()
             {
