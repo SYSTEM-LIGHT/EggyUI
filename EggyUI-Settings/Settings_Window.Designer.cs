@@ -77,10 +77,9 @@
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
             tabControl1.Location = new Point(0, 0);
-            tabControl1.Margin = new Padding(4);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(579, 706);
+            tabControl1.Size = new Size(450, 600);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -88,11 +87,10 @@
             tabPage1.Controls.Add(groupBox3);
             tabPage1.Controls.Add(groupBox2);
             tabPage1.Controls.Add(groupBox1);
-            tabPage1.Location = new Point(4, 29);
-            tabPage1.Margin = new Padding(4);
+            tabPage1.Location = new Point(4, 26);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(4);
-            tabPage1.Size = new Size(571, 673);
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(442, 570);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "常规设置";
             tabPage1.UseVisualStyleBackColor = true;
@@ -105,21 +103,18 @@
             groupBox3.Controls.Add(OpenPersonalizationSettings);
             groupBox3.Controls.Add(OpenStart11Settings);
             groupBox3.Controls.Add(OpenStartAllBackSettings);
-            groupBox3.Location = new Point(10, 386);
-            groupBox3.Margin = new Padding(4);
+            groupBox3.Location = new Point(8, 328);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4);
-            groupBox3.Size = new Size(548, 275);
+            groupBox3.Size = new Size(426, 234);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "其它设置";
             // 
             // OpenLusrmgrMsc
             // 
-            OpenLusrmgrMsc.Location = new Point(278, 135);
-            OpenLusrmgrMsc.Margin = new Padding(4);
+            OpenLusrmgrMsc.Location = new Point(216, 115);
             OpenLusrmgrMsc.Name = "OpenLusrmgrMsc";
-            OpenLusrmgrMsc.Size = new Size(262, 47);
+            OpenLusrmgrMsc.Size = new Size(204, 40);
             OpenLusrmgrMsc.TabIndex = 11;
             OpenLusrmgrMsc.Text = "打开本地用户和组";
             OpenLusrmgrMsc.UseVisualStyleBackColor = true;
@@ -127,10 +122,9 @@
             // 
             // OpenGpeditMsc
             // 
-            OpenGpeditMsc.Location = new Point(8, 135);
-            OpenGpeditMsc.Margin = new Padding(4);
+            OpenGpeditMsc.Location = new Point(6, 115);
             OpenGpeditMsc.Name = "OpenGpeditMsc";
-            OpenGpeditMsc.Size = new Size(262, 47);
+            OpenGpeditMsc.Size = new Size(204, 40);
             OpenGpeditMsc.TabIndex = 10;
             OpenGpeditMsc.Text = "打开组策略编辑器";
             OpenGpeditMsc.UseVisualStyleBackColor = true;
@@ -138,10 +132,9 @@
             // 
             // OpenControl
             // 
-            OpenControl.Location = new Point(278, 80);
-            OpenControl.Margin = new Padding(4);
+            OpenControl.Location = new Point(216, 68);
             OpenControl.Name = "OpenControl";
-            OpenControl.Size = new Size(262, 47);
+            OpenControl.Size = new Size(204, 40);
             OpenControl.TabIndex = 9;
             OpenControl.Text = "打开控制面板";
             OpenControl.UseVisualStyleBackColor = true;
@@ -149,10 +142,9 @@
             // 
             // OpenPersonalizationSettings
             // 
-            OpenPersonalizationSettings.Location = new Point(8, 80);
-            OpenPersonalizationSettings.Margin = new Padding(4);
+            OpenPersonalizationSettings.Location = new Point(6, 68);
             OpenPersonalizationSettings.Name = "OpenPersonalizationSettings";
-            OpenPersonalizationSettings.Size = new Size(262, 47);
+            OpenPersonalizationSettings.Size = new Size(204, 40);
             OpenPersonalizationSettings.TabIndex = 8;
             OpenPersonalizationSettings.Text = "打开系统个性化设置";
             OpenPersonalizationSettings.UseVisualStyleBackColor = true;
@@ -160,10 +152,9 @@
             // 
             // OpenStart11Settings
             // 
-            OpenStart11Settings.Location = new Point(278, 26);
-            OpenStart11Settings.Margin = new Padding(4);
+            OpenStart11Settings.Location = new Point(216, 22);
             OpenStart11Settings.Name = "OpenStart11Settings";
-            OpenStart11Settings.Size = new Size(262, 47);
+            OpenStart11Settings.Size = new Size(204, 40);
             OpenStart11Settings.TabIndex = 7;
             OpenStart11Settings.Text = "打开Start11设置";
             OpenStart11Settings.UseVisualStyleBackColor = true;
@@ -171,10 +162,9 @@
             // 
             // OpenStartAllBackSettings
             // 
-            OpenStartAllBackSettings.Location = new Point(8, 26);
-            OpenStartAllBackSettings.Margin = new Padding(4);
+            OpenStartAllBackSettings.Location = new Point(6, 22);
             OpenStartAllBackSettings.Name = "OpenStartAllBackSettings";
-            OpenStartAllBackSettings.Size = new Size(262, 47);
+            OpenStartAllBackSettings.Size = new Size(204, 40);
             OpenStartAllBackSettings.TabIndex = 6;
             OpenStartAllBackSettings.Text = "打开StartAllBack设置";
             OpenStartAllBackSettings.UseVisualStyleBackColor = true;
@@ -187,21 +177,18 @@
             groupBox2.Controls.Add(OpenFBGImageFolder);
             groupBox2.Controls.Add(DisableFBG);
             groupBox2.Controls.Add(EnableFBG);
-            groupBox2.Location = new Point(10, 185);
-            groupBox2.Margin = new Padding(4);
+            groupBox2.Location = new Point(8, 157);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4);
-            groupBox2.Size = new Size(548, 194);
+            groupBox2.Size = new Size(426, 165);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "文件夹背景设置";
             // 
             // ReloadFolderBackgroundPicButton
             // 
-            ReloadFolderBackgroundPicButton.Location = new Point(8, 134);
-            ReloadFolderBackgroundPicButton.Margin = new Padding(4);
+            ReloadFolderBackgroundPicButton.Location = new Point(6, 114);
             ReloadFolderBackgroundPicButton.Name = "ReloadFolderBackgroundPicButton";
-            ReloadFolderBackgroundPicButton.Size = new Size(213, 47);
+            ReloadFolderBackgroundPicButton.Size = new Size(166, 40);
             ReloadFolderBackgroundPicButton.TabIndex = 5;
             ReloadFolderBackgroundPicButton.Text = "刷新预览图像";
             ReloadFolderBackgroundPicButton.UseVisualStyleBackColor = true;
@@ -210,20 +197,18 @@
             // FolderBackgroundPic
             // 
             FolderBackgroundPic.Image = (Image)resources.GetObject("FolderBackgroundPic.Image");
-            FolderBackgroundPic.Location = new Point(229, 26);
-            FolderBackgroundPic.Margin = new Padding(4);
+            FolderBackgroundPic.Location = new Point(178, 22);
             FolderBackgroundPic.Name = "FolderBackgroundPic";
-            FolderBackgroundPic.Size = new Size(311, 155);
+            FolderBackgroundPic.Size = new Size(242, 132);
             FolderBackgroundPic.SizeMode = PictureBoxSizeMode.Zoom;
             FolderBackgroundPic.TabIndex = 4;
             FolderBackgroundPic.TabStop = false;
             // 
             // OpenFBGImageFolder
             // 
-            OpenFBGImageFolder.Location = new Point(8, 80);
-            OpenFBGImageFolder.Margin = new Padding(4);
+            OpenFBGImageFolder.Location = new Point(6, 68);
             OpenFBGImageFolder.Name = "OpenFBGImageFolder";
-            OpenFBGImageFolder.Size = new Size(213, 47);
+            OpenFBGImageFolder.Size = new Size(166, 40);
             OpenFBGImageFolder.TabIndex = 3;
             OpenFBGImageFolder.Text = "打开文件夹背景图片目录";
             OpenFBGImageFolder.UseVisualStyleBackColor = true;
@@ -231,10 +216,9 @@
             // 
             // DisableFBG
             // 
-            DisableFBG.Location = new Point(118, 26);
-            DisableFBG.Margin = new Padding(4);
+            DisableFBG.Location = new Point(92, 22);
             DisableFBG.Name = "DisableFBG";
-            DisableFBG.Size = new Size(103, 47);
+            DisableFBG.Size = new Size(80, 40);
             DisableFBG.TabIndex = 2;
             DisableFBG.Text = "关闭";
             DisableFBG.UseVisualStyleBackColor = true;
@@ -242,10 +226,9 @@
             // 
             // EnableFBG
             // 
-            EnableFBG.Location = new Point(8, 26);
-            EnableFBG.Margin = new Padding(4);
+            EnableFBG.Location = new Point(6, 22);
             EnableFBG.Name = "EnableFBG";
-            EnableFBG.Size = new Size(103, 47);
+            EnableFBG.Size = new Size(80, 40);
             EnableFBG.TabIndex = 1;
             EnableFBG.Text = "开启";
             EnableFBG.UseVisualStyleBackColor = true;
@@ -258,21 +241,18 @@
             groupBox1.Controls.Add(OpenRainmeterSkinFolder);
             groupBox1.Controls.Add(CheckRainmeterStartup);
             groupBox1.Controls.Add(OpenRainmeterFolder);
-            groupBox1.Location = new Point(10, 7);
-            groupBox1.Margin = new Padding(4);
+            groupBox1.Location = new Point(8, 6);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4);
-            groupBox1.Size = new Size(548, 171);
+            groupBox1.Size = new Size(426, 145);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Rainmeter 设置";
             // 
             // InstallRainmeterSkin
             // 
-            InstallRainmeterSkin.Location = new Point(8, 112);
-            InstallRainmeterSkin.Margin = new Padding(4);
+            InstallRainmeterSkin.Location = new Point(6, 95);
             InstallRainmeterSkin.Name = "InstallRainmeterSkin";
-            InstallRainmeterSkin.Size = new Size(262, 47);
+            InstallRainmeterSkin.Size = new Size(204, 40);
             InstallRainmeterSkin.TabIndex = 4;
             InstallRainmeterSkin.Text = "安装 .rmskin 皮肤包";
             InstallRainmeterSkin.UseVisualStyleBackColor = true;
@@ -280,10 +260,9 @@
             // 
             // ResetRainmeterConfig
             // 
-            ResetRainmeterConfig.Location = new Point(278, 112);
-            ResetRainmeterConfig.Margin = new Padding(4);
+            ResetRainmeterConfig.Location = new Point(216, 95);
             ResetRainmeterConfig.Name = "ResetRainmeterConfig";
-            ResetRainmeterConfig.Size = new Size(262, 47);
+            ResetRainmeterConfig.Size = new Size(204, 40);
             ResetRainmeterConfig.TabIndex = 3;
             ResetRainmeterConfig.Text = "重置 Rainmeter";
             ResetRainmeterConfig.UseVisualStyleBackColor = true;
@@ -291,10 +270,9 @@
             // 
             // OpenRainmeterSkinFolder
             // 
-            OpenRainmeterSkinFolder.Location = new Point(278, 58);
-            OpenRainmeterSkinFolder.Margin = new Padding(4);
+            OpenRainmeterSkinFolder.Location = new Point(216, 49);
             OpenRainmeterSkinFolder.Name = "OpenRainmeterSkinFolder";
-            OpenRainmeterSkinFolder.Size = new Size(262, 47);
+            OpenRainmeterSkinFolder.Size = new Size(204, 40);
             OpenRainmeterSkinFolder.TabIndex = 2;
             OpenRainmeterSkinFolder.Text = "打开皮肤文件夹";
             OpenRainmeterSkinFolder.UseVisualStyleBackColor = true;
@@ -303,10 +281,9 @@
             // CheckRainmeterStartup
             // 
             CheckRainmeterStartup.AutoSize = true;
-            CheckRainmeterStartup.Location = new Point(8, 26);
-            CheckRainmeterStartup.Margin = new Padding(4);
+            CheckRainmeterStartup.Location = new Point(6, 22);
             CheckRainmeterStartup.Name = "CheckRainmeterStartup";
-            CheckRainmeterStartup.Size = new Size(170, 24);
+            CheckRainmeterStartup.Size = new Size(138, 21);
             CheckRainmeterStartup.TabIndex = 1;
             CheckRainmeterStartup.Text = "开机启动 Rainmeter";
             CheckRainmeterStartup.UseVisualStyleBackColor = true;
@@ -314,10 +291,9 @@
             // 
             // OpenRainmeterFolder
             // 
-            OpenRainmeterFolder.Location = new Point(8, 58);
-            OpenRainmeterFolder.Margin = new Padding(4);
+            OpenRainmeterFolder.Location = new Point(6, 49);
             OpenRainmeterFolder.Name = "OpenRainmeterFolder";
-            OpenRainmeterFolder.Size = new Size(262, 47);
+            OpenRainmeterFolder.Size = new Size(204, 40);
             OpenRainmeterFolder.TabIndex = 0;
             OpenRainmeterFolder.Text = "打开 Rainmeter 文件夹";
             OpenRainmeterFolder.UseVisualStyleBackColor = true;
@@ -327,11 +303,10 @@
             // 
             tabPage2.Controls.Add(groupBox5);
             tabPage2.Controls.Add(groupBox4);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Margin = new Padding(4);
+            tabPage2.Location = new Point(4, 26);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(4);
-            tabPage2.Size = new Size(571, 673);
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(442, 570);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "关于EggyUI";
             tabPage2.UseVisualStyleBackColor = true;
@@ -342,21 +317,18 @@
             groupBox5.Controls.Add(VisitEggyUIWebsite);
             groupBox5.Controls.Add(JoinEggyUIGroup);
             groupBox5.Controls.Add(VisitEggyUIBiliBili);
-            groupBox5.Location = new Point(10, 526);
-            groupBox5.Margin = new Padding(4);
+            groupBox5.Location = new Point(8, 447);
             groupBox5.Name = "groupBox5";
-            groupBox5.Padding = new Padding(4);
-            groupBox5.Size = new Size(548, 135);
+            groupBox5.Size = new Size(426, 115);
             groupBox5.TabIndex = 2;
             groupBox5.TabStop = false;
             groupBox5.Text = "EggyUI 相关链接";
             // 
             // VisitBSODMEMZWebsite
             // 
-            VisitBSODMEMZWebsite.Location = new Point(282, 80);
-            VisitBSODMEMZWebsite.Margin = new Padding(4);
+            VisitBSODMEMZWebsite.Location = new Point(216, 68);
             VisitBSODMEMZWebsite.Name = "VisitBSODMEMZWebsite";
-            VisitBSODMEMZWebsite.Size = new Size(262, 47);
+            VisitBSODMEMZWebsite.Size = new Size(204, 40);
             VisitBSODMEMZWebsite.TabIndex = 10;
             VisitBSODMEMZWebsite.Text = "访问 BSOD-MEMZ 的官方网站";
             VisitBSODMEMZWebsite.UseVisualStyleBackColor = true;
@@ -364,10 +336,9 @@
             // 
             // VisitEggyUIWebsite
             // 
-            VisitEggyUIWebsite.Location = new Point(8, 80);
-            VisitEggyUIWebsite.Margin = new Padding(4);
+            VisitEggyUIWebsite.Location = new Point(6, 68);
             VisitEggyUIWebsite.Name = "VisitEggyUIWebsite";
-            VisitEggyUIWebsite.Size = new Size(262, 47);
+            VisitEggyUIWebsite.Size = new Size(204, 40);
             VisitEggyUIWebsite.TabIndex = 9;
             VisitEggyUIWebsite.Text = "访问 EggyUI 官网";
             VisitEggyUIWebsite.UseVisualStyleBackColor = true;
@@ -375,10 +346,9 @@
             // 
             // JoinEggyUIGroup
             // 
-            JoinEggyUIGroup.Location = new Point(278, 26);
-            JoinEggyUIGroup.Margin = new Padding(4);
+            JoinEggyUIGroup.Location = new Point(216, 22);
             JoinEggyUIGroup.Name = "JoinEggyUIGroup";
-            JoinEggyUIGroup.Size = new Size(262, 47);
+            JoinEggyUIGroup.Size = new Size(204, 40);
             JoinEggyUIGroup.TabIndex = 8;
             JoinEggyUIGroup.Text = "加入 EggyUI 交流群";
             JoinEggyUIGroup.UseVisualStyleBackColor = true;
@@ -386,10 +356,9 @@
             // 
             // VisitEggyUIBiliBili
             // 
-            VisitEggyUIBiliBili.Location = new Point(8, 26);
-            VisitEggyUIBiliBili.Margin = new Padding(4);
+            VisitEggyUIBiliBili.Location = new Point(6, 22);
             VisitEggyUIBiliBili.Name = "VisitEggyUIBiliBili";
-            VisitEggyUIBiliBili.Size = new Size(262, 47);
+            VisitEggyUIBiliBili.Size = new Size(204, 40);
             VisitEggyUIBiliBili.TabIndex = 7;
             VisitEggyUIBiliBili.Text = "EggyUI 官方B站账号";
             VisitEggyUIBiliBili.UseVisualStyleBackColor = true;
@@ -399,11 +368,9 @@
             // 
             groupBox4.Controls.Add(VersionInfoText);
             groupBox4.Controls.Add(VersionPic);
-            groupBox4.Location = new Point(10, 7);
-            groupBox4.Margin = new Padding(4);
+            groupBox4.Location = new Point(8, 6);
             groupBox4.Name = "groupBox4";
-            groupBox4.Padding = new Padding(4);
-            groupBox4.Size = new Size(548, 512);
+            groupBox4.Size = new Size(426, 435);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "关于 EggyUI";
@@ -413,11 +380,10 @@
             VersionInfoText.BackColor = SystemColors.Window;
             VersionInfoText.BorderStyle = BorderStyle.None;
             VersionInfoText.Dock = DockStyle.Fill;
-            VersionInfoText.Location = new Point(4, 106);
-            VersionInfoText.Margin = new Padding(4);
+            VersionInfoText.Location = new Point(3, 89);
             VersionInfoText.Name = "VersionInfoText";
             VersionInfoText.ReadOnly = true;
-            VersionInfoText.Size = new Size(540, 402);
+            VersionInfoText.Size = new Size(420, 343);
             VersionInfoText.TabIndex = 1;
             VersionInfoText.Text = "EggyUI 当前版本：v3.5\nby EggyUI 项目组";
             // 
@@ -425,22 +391,20 @@
             // 
             VersionPic.Dock = DockStyle.Top;
             VersionPic.Image = (Image)resources.GetObject("VersionPic.Image");
-            VersionPic.Location = new Point(4, 24);
-            VersionPic.Margin = new Padding(4);
+            VersionPic.Location = new Point(3, 19);
             VersionPic.Name = "VersionPic";
-            VersionPic.Size = new Size(540, 82);
+            VersionPic.Size = new Size(420, 70);
             VersionPic.SizeMode = PictureBoxSizeMode.Zoom;
             VersionPic.TabIndex = 0;
             VersionPic.TabStop = false;
             // 
             // Settings_Window
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(579, 706);
+            ClientSize = new Size(450, 600);
             Controls.Add(tabControl1);
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            Margin = new Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Settings_Window";

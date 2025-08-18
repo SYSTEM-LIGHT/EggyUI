@@ -239,8 +239,8 @@ namespace EggyUI_Settings
                     // 这里是一个条件表达式，被我换行成了多行，
                     // 目的是为了提高代码的可读性，使代码更易维护
                     Arguments = box.Checked
-                        && !TaskExists("EggyUIWidgets") 
-                        ? $"/create /tn EggyUIWidgets /sc onlogon /tr \"{Path.Combine(RainmeterPath, "Rainmeter.exe")}\" /f" 
+                        && !TaskExists("EggyUIWidgets")
+                        ? $"/create /tn EggyUIWidgets /sc onlogon /tr \"{Path.Combine(RainmeterPath, "Rainmeter.exe")}\" /f"
                         : "/delete /tn EggyUIWidgets /f",
                     CreateNoWindow = true, // 无窗口创建进程
                     UseShellExecute = false
@@ -357,8 +357,7 @@ namespace EggyUI_Settings
                 { "OpenPersonalizationSettings", "打开系统个性化设置时发生错误：{0}" },
                 { "default", "打开控制面板时发生错误：{0}" },
                 { "OpenGpeditMsc", "打开组策略编辑器时发生错误：{0}" },
-                { "OpenLusrMgrMsc", "打开本地用户和组时发生错误：{0}" },
-
+                { "OpenLusrMgrMsc", "打开本地用户和组时发生错误：{0}" }
             };
 
             ButtonClickHandler(sender, pathMap, errorMsgMap);
