@@ -36,7 +36,7 @@ namespace EggyUI_Settings
             StartRainmeter();
         }
 
-        static void KillProcess(string processName)
+        private static void KillProcess(string processName)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace EggyUI_Settings
             }
         }
 
-        static void DeleteRainmeterFolder(Environment.SpecialFolder folderType)
+        private static void DeleteRainmeterFolder(Environment.SpecialFolder folderType)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace EggyUI_Settings
             }
         }
 
-        void StartRainmeter()
+        private void StartRainmeter()
         {
             try
             {

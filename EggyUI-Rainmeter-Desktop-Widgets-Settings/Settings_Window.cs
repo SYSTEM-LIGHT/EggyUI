@@ -89,10 +89,8 @@ namespace ERWS
             {
                 if (File.Exists(HeaderFileName))
                 {
-                    using (var imageStream = File.OpenRead(HeaderFileName))
-                    {
-                        mainheader.Image = Image.FromStream(imageStream);
-                    }
+                    using var imageStream = File.OpenRead(HeaderFileName);
+                    mainheader.Image = Image.FromStream(imageStream);
                 }
                 else
                 {
@@ -351,7 +349,7 @@ namespace ERWS
         /// </summary>
         /// <param name="action">失败的操作。</param>
         /// <param name="ex">发生的异常。</param>
-        private void ShowError(string action, Exception ex)
+        private static void ShowError(string action, Exception ex)
         {
             MessageBox.Show(
                 $"{action}，原因：\n{ex.Message}\n" +
@@ -378,13 +376,11 @@ namespace ERWS
             try
             {
                 // 使用File.Create创建文件并写入内容
-                using (FileStream fs = File.Create(ConfigFileName))
-                using (StreamWriter writer = new(fs, Encoding.Unicode))
+                using FileStream fs = File.Create(ConfigFileName);
+                using StreamWriter writer = new(fs, Encoding.Unicode);
+                foreach (string line in DefaultConfigLines)
                 {
-                    foreach (string line in DefaultConfigLines)
-                    {
-                        writer.WriteLine(line);
-                    }
+                    writer.WriteLine(line);
                 }
             }
             catch (Exception ex)

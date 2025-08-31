@@ -19,7 +19,7 @@ namespace EggyUI_Settings
     {
         #region 变量、方法
 
-        readonly ConfigurationService _configurationService;
+        private readonly ConfigurationService _configurationService;
 
         public Settings_Window()
         {
@@ -30,27 +30,27 @@ namespace EggyUI_Settings
         }
 
         // 获取Rainmeter路径
-        string RainmeterPath => _configurationService.RainmeterPath;
+        private string RainmeterPath => _configurationService.RainmeterPath;
 
         // 获取Rainmeter皮肤路径
-        string RainmeterSkinPath => _configurationService.RainmeterSkinPath;
+        private string RainmeterSkinPath => _configurationService.RainmeterSkinPath;
 
         // 获取文件夹背景目录
-        string FolderBackgroundPath => _configurationService.FolderBackgroundPath;
+        private string FolderBackgroundPath => _configurationService.FolderBackgroundPath;
 
         // 获取StartAllBack路径
-        string StartAllBackPath => _configurationService.StartAllBackPath;
+        private string StartAllBackPath => _configurationService.StartAllBackPath;
 
         // 获取Start11路径
-        string Start11Path => _configurationService.Start11Path;
+        private string Start11Path => _configurationService.Start11Path;
 
         // 贴图路径
-        static readonly string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
+        private static readonly string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
 
         // 版本信息文件路径
-        static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
+        private static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
 
-        static bool TaskExists(string taskName)
+        private static bool TaskExists(string taskName)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace EggyUI_Settings
             }
         }
 
-        void ReloadFolderBackgroundPic()
+        private void ReloadFolderBackgroundPic()
         {
             // 刷新文件夹背景预览图片
             string imageFolder = Path.Combine(FolderBackgroundPath, "image");
@@ -135,7 +135,7 @@ namespace EggyUI_Settings
         /// <param name="pathMap">路径字典</param>
         /// <param name="errorMsgMap">错误信息字典</param>
         /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param>
-        static void ButtonClickHandler(
+        private static void ButtonClickHandler(
             object sender,
             Dictionary<string, string> pathMap, // 路径字典
             Dictionary<string, string> errorMsgMap, // 错误信息字典
@@ -150,7 +150,7 @@ namespace EggyUI_Settings
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = fileName,
-                    Arguments = argumentsMap is not null
+                    Arguments = argumentsMap != null
                     ? (argumentsMap.TryGetValue(btn.Name, out string? value1)
                     ? value1 : argumentsMap["default"])
                     : "",
@@ -174,8 +174,7 @@ namespace EggyUI_Settings
 
         #region 事件处理程序
 
-        // 方法的private其实是可写可不写的（不加可见性标识符的话，默认可见性就是private）
-        void Settings_Window_Load(object sender, EventArgs e)
+        private void Settings_Window_Load(object sender, EventArgs e)
         {
             // 加载版本图片
             string VersionImage = Path.Combine(ArtWorkPath, "EggyUI_Version.png");
@@ -227,7 +226,7 @@ namespace EggyUI_Settings
             ReadVersionFileThread.Start();
         }
 
-        void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
+        private void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox box = (CheckBox)sender;
             try
@@ -257,35 +256,43 @@ namespace EggyUI_Settings
             }
         }
 
-        void ResetRainmeterButton_Click(object sender, EventArgs e)
+        private void ResetRainmeterButton_Click(object sender, EventArgs e)
         {
-            Thread ResetRainmeterThread = new(() =>
+            if (MessageBox.Show(
+                "你确定要重置Rainmeter吗？",
+                "提示",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning)
+                == DialogResult.Yes)
             {
-                try
+                Thread ResetRainmeterThread = new(() =>
                 {
-                    ResetRainmeter reset = new(RainmeterPath);
-                    reset.Start();
-                    MessageBox.Show(
-                        "Rainmeter重置成功！",
-                        "提示",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Information
-                        );
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(
-                        $"重置Rainmeter时发生错误：{ex.Message}",
-                        "错误",
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Error
-                        );
-                }
-            });
-            ResetRainmeterThread.Start();
+                    try
+                    {
+                        ResetRainmeter reset = new(RainmeterPath);
+                        reset.Start();
+                        MessageBox.Show(
+                            "Rainmeter重置成功！",
+                            "提示",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Information
+                            );
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(
+                            $"重置Rainmeter时发生错误：{ex.Message}",
+                            "错误",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                            );
+                    }
+                });
+                ResetRainmeterThread.Start();
+            }
         }
 
-        void RainmeterSettingsButton_Click(object sender, EventArgs e)
+        private void RainmeterSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             // 这里使用了 .NET 8 的现代语法特性 new() 来初始化字典，而非传统的 new Dictionary<string, string>。
@@ -309,7 +316,7 @@ namespace EggyUI_Settings
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        void FBGSettingsButton_Click(object sender, EventArgs e)
+        private void FBGSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             Dictionary<string, string> pathMap = new()
@@ -330,13 +337,13 @@ namespace EggyUI_Settings
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        void ReloadFolderBackgroundPicButton_Click(object sender, EventArgs e)
+        private void ReloadFolderBackgroundPicButton_Click(object sender, EventArgs e)
         {
             // 刷新文件夹背景预览图片
             ReloadFolderBackgroundPic();
         }
 
-        void OtherSettingsButton_Click(object sender, EventArgs e)
+        private void OtherSettingsButton_Click(object sender, EventArgs e)
         {
             // 路径列表
             Dictionary<string, string> pathMap = new()
@@ -363,7 +370,7 @@ namespace EggyUI_Settings
             ButtonClickHandler(sender, pathMap, errorMsgMap);
         }
 
-        void EggyUILinkButtonClick(object sender, EventArgs e)
+        private void EggyUILinkButtonClick(object sender, EventArgs e)
         {
             Dictionary<string, string> pathMap = new()
             {
