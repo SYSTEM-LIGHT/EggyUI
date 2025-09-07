@@ -1,18 +1,3 @@
-
-
-
-          
-我需要查看NTVersionLogoChanger项目的文件内容，了解其功能和结构，以便撰写README.md。
-        
-            
-toolName: view_files
-            
-status: success
-          
-            
-filePath: d:/project/EggyUI/NTVersionLogoChanger/NTVersionLogoChanger.DLL/NTVersionLogoChanger.cpp
-d:/project/EggyUI/NTVersionLogoChanger/NTVersionLogoChanger.DLL/NTVersionLogoChanger.h
-          
 # NTVersionLogoChanger 项目
 
 ## 项目简介
