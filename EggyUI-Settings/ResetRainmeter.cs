@@ -1,40 +1,77 @@
-﻿// 这些代码源自独立控制台程序（ResetRainmeter），
-// 为适配EggyUI设置程序进行了轻量化重构：
-// 1. 移除控制台交互逻辑，改为异常传递错误
-// 2. 增加路径注入构造（_RainmeterPath）
-// 3. 优化进程检测与目录删除的健壮性
-// 注：核心三步重置策略（结束→删除→重启）保持不变
-//     原控制台的进度提示转为调试日志输出
+﻿/*
+ * ============================================================================
+ * EggyUI - Windows 桌面美化主题包
+ * 基于网易《蛋仔派对》UI风格的粉丝二次创作，非官方、非商业项目
+ * ============================================================================
+ *  
+ * 作者: 冷落的小情绪 (SYSTEM-LIGHT)
+ * 贡献者: EggyUI 开发团队 (https://github.com/SYSTEM-LIGHT/EggyUI)
+ * 
+ * 版权所有 (c) 2024-2025 EggyUI 开发团队
+ * 
+ * 许可协议:
+ * 本项目为粉丝创作，严禁用于任何商业用途。
+ * 所有素材均为合法获取或自主重绘，未使用任何游戏解包内容。
+ * 
+ * 免责声明:
+ * 1. 本软件与微软、网易无关，Windows 和《蛋仔派对》分别为其所属公司的注册商标。
+ * 2. 使用者需自行承担因使用本软件可能带来的风险。
+ * 3. 禁止对本软件进行商业性使用、分发或集成至商业产品中。
+ * 
+ * ============================================================================
+ */
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace EggyUI_Settings
 {
-    internal class ResetRainmeter(string _RainmeterPath)
+    internal class ResetRainmeter(string _RainmeterPath, string? _RainmeterSkinPath = null)
     {
         readonly string RainmeterPath = _RainmeterPath;
+        readonly string? SkinPath = _RainmeterSkinPath;
 
-        public void Start()
+        public void Start(CancellationToken cancellationToken = default)
         {
             // 1. 结束Rainmeter进程
             KillProcess("Rainmeter");
             Thread.Sleep(2000); // 等待进程完全退出
 
-            // 2. 删除AppData/Roaming中的配置目录
+            // 2. 删除配置目录（新增皮肤路径处理）
             DeleteRainmeterFolder(Environment.SpecialFolder.ApplicationData);
-
-            // 3. 删除文档目录中的Rainmeter文件夹
             DeleteRainmeterFolder(Environment.SpecialFolder.MyDocuments);
+            
+            // 新增皮肤目录删除逻辑
+            if (!string.IsNullOrWhiteSpace(SkinPath))
+            {
+                DeleteCustomSkinFolder();
+            }
 
-            // 4. 重新启动Rainmeter（从当前目录启动）
+            // 3. 重新启动Rainmeter
             StartRainmeter();
         }
+
+        // 新增皮肤目录删除方法
+        private void DeleteCustomSkinFolder()
+        {
+            try
+            {
+                if (Directory.Exists(SkinPath))
+                {
+                    Directory.Delete(SkinPath, true);
+                    Debug.WriteLine($"[重置 Rainmeter] 已删除自定义皮肤目录: {SkinPath}");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"删除自定义皮肤目录错误: {ex.Message}");
+            }
+        }
+
+        // 修改后的构造函数组
+        public ResetRainmeter(string _RainmeterPath) : this(_RainmeterPath, null) { }
 
         private static void KillProcess(string processName)
         {

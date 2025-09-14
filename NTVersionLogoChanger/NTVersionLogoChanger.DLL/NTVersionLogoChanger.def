@@ -1,9 +1,0 @@
-LIBRARY NTVersionLogoChanger
-EXPORTS
-    RegisterPlugin
-    UnregisterPlugin
-    SetCustomLogo
-    RestoreDefaultLogo
-    LoadLogoFromImagesFolder
-    DllRegisterServer
-    DllUnregisterServer

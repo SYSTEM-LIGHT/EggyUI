@@ -1,108 +1,130 @@
 ﻿# EggyUI
 
-[简体中文](README.md) | **English**
+**简体中文** | [English](README_en-us.md)
 
-If you find GitHub access slow in China, you can check out its Gitee page: [https://gitee.com/system-light/EggyUI/tree/master/](https://gitee.com/system-light/EggyUI/tree/master/)
+If you find GitHub access too slow within mainland China, you can check the project's page on Gitee: [https://gitee.com/system-light/EggyUI/tree/master/](https://gitee.com/system-light/EggyUI/tree/master/)
 
 ## 🎮 Project Introduction
-EggyUI is a customization theme pack designed exclusively for Windows desktop.
+EggyUI is a customization theme pack specifically designed for the Windows desktop, drawing inspiration from the NetEase game "Eggy Party".
 
-> ⚠️ Important Notes
-> 1.  It only works on Windows desktop; mobile or other operating systems are not supported.
-> 2.  This project is inspired by "Eggy Party" and is a fan-made derivative work. Commercial use is strictly prohibited.
-> 3.  Monetization is not allowed—this includes paid distribution, bundling with commercial software, ad-based revenue, or inclusion in paid services.
-> 4.  Regarding asset sources:
->     *   No decompiled/game asset files from "Eggy Party" were used.
->     *   All visual elements are sourced legitimately (e.g., in-game screenshots, official promotional images).
->     *   Similar-looking elements were redrawn from scratch to emulate the game’s UI style.
-> 5.  Trademarks and attribution:
->     *   This project is unrelated to Microsoft Corporation—it is an independently developed third-party theme customization pack.
->     *   Windows® is a registered trademark of Microsoft in the U.S. and other countries. We modify the Windows interface visually and do not represent Microsoft’s official views or products.
+> [!NOTE]
+> **Important Notes**
+> 1.  **Platform Limitation**: It only works on the Windows desktop; mobile phones or other operating systems cannot use it.
+> 2.  **Fan Creation**: This project is a fan-made derivative work and must not be used for commercial purposes.
+> 3.  **Non-Commercial Nature**: Want to use it for profit? Not allowed. This includes selling it for a fee, bundling it with commercial software, profiting from ads, or including it in paid services – none of these are permitted.
+> 4.  **Asset Sources**: During development, we paid special attention to:
+>     *   Not using any assets from unpacking/disassembling "Eggy Party".
+>     *   All visual elements were obtained from legal channels (such as in-game screenshots, official promotional images).
+>     *   Elements that look similar were redrawn by us to recreate the game's UI style.
+> 5.  **Trademarks and Attribution**:
+>     *   This project is not related to Microsoft Corporation; it is an independently developed third-party theme customization pack.
+>     *   Windows is a registered trademark of Microsoft in the U.S. and other countries.
+>     *   This is merely an unofficial visual modification on the Windows system and does not represent the views or products of Microsoft officially.
+>     *   "Eggy Party" is a registered trademark of NetEase Games. EggyUI is not affiliated with NetEase officially.
 
 ## 🌟 About EggyUI
-*   Nature: Non-profit fan creation (essentially a Windows desktop customization pack).
-*   Developer: Created by [BSOD-MEMZ](https://github.com/BSOD-MEMZ) (Bilibili: [https://space.bilibili.com/1975308950](https://space.bilibili.com/1975308950)) and their team.
-*   Scope: A feature-rich Windows desktop personalization theme pack.
-*   Copyright & Trademarks:
-    *   Based on NetEase’s "Eggy Party" UI style; original game assets belong to NetEase.
-    *   Assets are either self-remade or legally sourced—no game decompilation materials.
-    *   Windows® and related trademarks (names/logos) are property of Microsoft. EggyUI has no affiliation, sponsorship, or endorsement from Microsoft. It aims to offer a personalized visual experience.
+*   **Nature**: Non-profit fan creation (simply put, it's a Windows desktop customization pack).
+*   **Developer**: Initiated by [BSOD-MEMZ](https://github.com/BSOD-MEMZ) (Bilibili homepage: [https://space.bilibili.com/1975308950](https://space.bilibili.com/1975308950)) and maintained by a passionate community of developers.
+*   **Positioning**: A feature-rich Windows desktop personalization theme pack.
+*   **Copyright and Trademark Statement**:
+    *   It is a derivative work based on the UI style of NetEase's "Eggy Party". The original game assets' copyright belongs to NetEase.
+    *   Assets in the pack are either our own remakes or obtained legally; there are absolutely no unpacked game assets.
+    *   The Windows operating system and its related trademarks (such as names, logos) belong to Microsoft. The EggyUI team has no affiliation, sponsorship, or official endorsement from Microsoft.
 
-## ✨ EggyUI Development Journey
+## ✨ EggyUI Development History
 
-*   Origins & Early Versions:
-    *   The project began in April 2024. Developer BSOD-MEMZ was creating an "Eggy Party"-style Shell UI for a Windows PE maintenance system ("EggyOS"). Though unpublished, it became EggyUI’s foundation.
-    *   On July 22, 2024, BSOD-MEMZ released EggyUI 1.0 (Win11-only). Later, [Win-Fluent-GPT](https://space.bilibili.com/1326423111) developed a Win10 version (no image released; continued by MEMZ-Edge).
-    *   EggyUI 2.0 (August 8, 2024) debuted as a standalone installer but faced criticism for complex setup. Version 2.5 (January 25, 2025) added acrylic effects and optimized Rainmeter components.
+*   **Origin and Early Versions (2024)**:
+    *   The project started in April 2024. Developer BSOD-MEMZ was working on a Shell interface for an "Eggy Party"-style Windows PE maintenance system (called EggyOS). Although this system was never released publicly, it became the foundation for EggyUI.
+    *   On July 22, 2024, BSOD-MEMZ released EggyUI 1.0, which initially only supported Win11. Later, other developers created a Win10 version.
+    *   On August 8, 2024, EggyUI 2.0 was released as a standalone installer, but the installation process was too cumbersome and criticized by many. On January 25, 2025, the 2.5 version system image was released, adding acrylic effects and optimizing Rainmeter components.
 
-*   3.0 Setbacks & Community Efforts:
-    *   On March 15, 2025, EggyUI 3.0 was announced but canceled after the dev team’s chat group disbanded unexpectedly, resulting in file loss.
-    *   Community member [SYSTEM-LIGHT](https://space.bilibili.com/1591761987) quickly created a system image, released for testing on April 20, 2025.
-    *   On May 6, 2025, EggyUI’s official account announced a "temporary disbandment" (written by member [ShenBuGaoWoGao](https://space.bilibili.com/3546785651887055)). Most developers (including BSOD-MEMZ) opposed this, and development continued.
-    *   On May 31, 2025, a major update replaced EasyLanguage-built components with .NET equivalents (to reduce antivirus false positives). This became the first stable .NET-integrated version and laid groundwork for 3.5.
+*   **The Tribulations of 3.0 and Community Effort (March-May 2025)**:
+    *   **Mid-March 2025**: As EggyUI 3.0 development neared completion, **the original project communication group was unexpectedly disbanded, resulting in the loss of critical installer and resource files**, stalling development. Core developer Sylphy was一度情绪低落 (once felt down) due to losing access to the private repository.
+    *   **Community Member Saves the Day**: Developer **SYSTEM-LIGHT** re-uploaded their locally saved development backup files to a new group and took over group management, **saving the project** and preserving the groundwork for the final release of version 3.0.
+    *   **Early May 2025**: Core developer **Sylphy** left the project due to personal reasons. Member "神不搞我搞" (formerly "光光猫猫") **unilaterally announced the project team was "temporarily dissolved"**, sparking strong opposition within the team.
+    *   **Not Actually Dissolved**: Project founder **BSOD-MEMZ** and other core members (like **red.blue.light**, **SYSTEM-LIGHT**) **strongly opposed the dissolution decision**. After a brief period of chaos, development continued, pushed forward by the remaining members.
 
-*   Fleeting Appearance of the Eggy Desktop Pet:
-    *   EggyUI 3.0 included an "Eggy Desktop Pet" (Python-based, by Sylphy and Red.Blue.Light). It aimed to be a DeepSeek AI-powered assistant with command execution via Function Calling.
-    *   Removed in 3.5 due to:
-        *   Loss of AI functionality and Sylphy’s departure.
-        *   Closed-source code (only Red.Blue.Light had access; API key security concerns).
-        *   High maintenance costs. Despite discontinuation, it was an innovative experiment.
+*   **The Fleeting Appearance of the Eggy Desktop Pet**:
+    *   EggyUI 3.0 originally included an Eggy desktop pet, created by Sylphy and Red.Blue.Light using Python. It was intended to be an AI-powered interactive assistant.
+    *   However, it was removed by version 3.5, primarily because:
+        *   The AI functionality became unusable, and core developer Sylphy had left the team.
+        *   This part of the code was never open-sourced.
+        *   Subsequent maintenance was too burdensome. Although it couldn't be continued, it represented an interesting attempt at an interactive desktop experience.
 
-*   Unrealized Concepts: GloPM & Font Strategy:
-    *   GloPM (by Sylphy) aimed to be a resource-sharing hub for EggyUI. It was scrapped due to maintenance risks (single-person dependency), complexity, and security review challenges.
-    *   Font strategy learned from past issues (EggyUI 2.0 for Win7 caused compatibility problems by replacing system fonts). Now, EggyUI preserves default fonts (e.g., Microsoft YaHei) and uses "Eggy"-style fonts (FZLanTingYuan) only in specific areas (e.g., Start11), balancing aesthetics and stability.
+*   **The Innovation and Release of 3.5 (July 2025)**:
+    *   Driven primarily by **SYSTEM-LIGHT**, the project shifted towards a more stable technical architecture and deployment method.
+    *   Core components were **rewritten using the .NET framework**, replacing parts previously written in Easy Language, significantly improving performance, compatibility, and security.
+    *   A new **Windows system image + unattended automatic deployment** installation method was adopted, providing a more complete experience.
+    *   **On July 22, 2025** (the project's first anniversary), the EggyUI 3.5 system image was officially released. Its promotional and testing videos were published by **SYSTEM-LIGHT** under the Bilibili account "一只野生的蛋小绿_Eggy" and successfully attracted significant attention.
+
+*   **Unrealized Concepts**:
+    *   **GloPM**: A resource sharing center designed by Sylphy, which was not implemented due to maintenance risks and technical complexity.
+    *   **Font Strategy**: Learning from previous versions, system fonts are no longer globally replaced; theme fonts are only used in specific components, ensuring system stability.
+
+## 🤝 Contributors
+
+Thanks to all developers who contributed to the EggyUI project, especially the following core members:
+*   **[BSOD-MEMZ](https://github.com/BSOD-MEMZ)** - Project Founder
+*   **SYSTEM-LIGHT ([SYSTEM-LIGHT](https://github.com/SYSTEM-LIGHT))** - Core developer and main driver behind EggyUI 3.5, resolved the 3.0 crisis and completed the 3.5 release
+*   **Sylphy** - Early core developer, designed advanced features like the AI desktop pet
+*   **red.blue.light** - Core developer, participated in the development of multiple components
+*   **20年冬 (爱苏璇儿)** - Testing and Promotion
+*   **神不搞我搞 (formerly 光光猫猫, 宣传蛋)** - Early planning and promotion
+
+(This list is organized by the nature of contribution. Thanks to all members who participated!)
 
 ## ⚙️ Major Innovations in EggyUI 3.5
 
-*   Basics:
-    *   Free for non-commercial/personal use only.
-    *   All assets are compliant; UI elements are remade based on official materials.
+*   **Basic Information**:
+    *   Non-commercial and free, for personal use only, not for commercial use.
+    *   All materials are compliant; interface elements are remade based on officially published assets.
 
-*   Technical Upgrades:
-    *   Core components partially rewritten in .NET (replacing EasyLanguage), yielding:
-        *   Better system compatibility.
-        *   >40% performance boost and faster responsiveness.
-        *   Improved security, stability, and maintainability.
-        *   Reduced memory leak risks.
+*   **Technical Architecture Upgrade**:
+    *   Core components were partially rewritten using the .NET framework (replacing parts previously in Easy Language), bringing several benefits:
+        *   Stronger system compatibility.
+        *   Performance improved by over 40%, with noticeably faster operation response.
+        *   Better security and stability, easier maintenance.
+        *   Reduced risk of memory leaks.
 
-*   Installation Overhaul:
-    *   New Windows system installation + unattended automated deployment.
-    *   Demo video: [Eggy Party-Style Custom Win11 — Eggy UI 3.5 Experience](https://www.bilibili.com/video/BV1kbgGz7Em1).
-    *   Physical device demo by [0xc0000022](https://space.bilibili.com/1092500907): [Eggy UI 3.5 Real-Machine Unboxing](https://www.bilibili.com/video/BV13w8nzqE4V).
+*   **Major Change in Installation Mode**:
+    *   Uses a brand new Windows system installation with unattended automatic deployment technology.
+    *   To see a release demonstration, there's a video on Bilibili: [蛋仔派对风格定制Win11——Eggy UI 3.5体验](https://www.bilibili.com/video/BV1kbgGz7Em1) (Eggy Party Style Custom Win11 – Eggy UI 3.5 Experience)
+    *   There's also a physical machine demo by [0xc0000022](https://space.bilibili.com/1092500907): [Eggy UI 3.5实体机开箱体验](https://www.bilibili.com/video/BV13w8nzqE4V) (Eggy UI 3.5 Physical Machine Unboxing Experience)
 
-*   Release Notes & Clarifications:
-    *   "Image leak" rumors were false; caused by internal miscommunication.
-    *   Actual release timeline:
-        *   Review video: July 21, 2025 (near 1st anniversary).
-        *   Image release: July 22, 2025 (anniversary date).
-    *   Compatibility:
-        *   System modifications rigorously tested.
-        *   Rare issues may occur (e.g., system drive letter `X:`).
-        *   Start menu glitches (uncommon) are being addressed via user feedback.
+*   **Release Notes and Clarifications**:
+    *   Claims of an "image leak" are pure rumors, actually stemming from internal team communication issues.
+    *   Actual release timeline was:
+        *   Review video released on July 21, 2025 (eve of the anniversary).
+        *   Image officially released on July 22, coinciding with the anniversary celebration.
+    *   Regarding compatibility:
+        *   System modifications have undergone strict testing.
+        *   Very rare special circumstances (e.g., system drive letter being X:) might cause issues.
+        *   For uncommon issues like Start Menu malfunctions, we are collecting feedback for prompt improvements.
 
-*   Recommendations:
-    *   ⚠️ Strongly advised: Use this theme on clean, official Windows installations.
-    *   💡 A safer standalone installer (non-system-modifying) is in development.
-    *   Current system image carries higher risks than typical desktop customization.
+*   **Some Recommendations**:
+    *   ⚠️ Sincere advice: It's best to use this customization theme on a clean, genuine Windows system.
+    *   💡 We are developing a safer standalone installer aimed at not modifying core system files.
+    *   The currently provided system image solution carries higher risks than typical desktop customization operations.
 
-*   Breakthroughs:
-    *   Fixed legacy compatibility issues (e.g., network configuration errors).
-    *   Significant component performance improvements.
+*   **Breakthrough Achievements**:
+    *   Previous compatibility issues (e.g., network configuration failures) have been completely resolved.
+    *   Component performance has also been significantly enhanced.
 
-## 💡 Conclusion
-> ⚠️ Reiterated: Prioritize installing customization components via standard methods on clean Windows systems. Pre-themed system images may carry stability risks. The standalone EggyUI 3.5 installer for official Windows is underway—stay tuned.
+## 💡 Summary
+> [!WARNING]
+> **Reiterating**: We strongly recommend prioritizing the use of these customization components via standard installation methods on a clean, genuine Windows system. Using modified system images pre-installed with themes may carry instability risks, for which you must take responsibility. The EggyUI 3.5 standalone installer designed specifically for genuine systems is in active development; stay tuned for后续更新 (follow-up updates).
 
-EggyUI is a non-commercial, fan-made Windows desktop customization pack. Version 3.5 adopts a new system-level deployment and .NET-rewritten components, greatly improving compatibility and stability.
+EggyUI is a theme pack for customizing the Windows desktop, non-commercial in nature, created by fans. Version 3.5 adopted a new system-level deployment method and rewrote components using .NET, significantly improving compatibility and stability.
 
-Key Reaffirmations:
-🔒 This is an "Eggy Party" fan creation:
-*   Permanently free; commercial use forbidden.
-*   Uses no decompiled game assets—only remade/legitimate materials.
-*   Commercialization violates the license.
+**Important Reiteration**:
+🔒 **This is a fan creation for "Eggy Party"**:
+*   Permanently free and absolutely not permitted for commercial use.
+*   Does not use any unpacked game assets; everything is remade or obtained legally.
+*   Commercial use violates the license terms.
 
-🔒 Legal & Trademarks:
-*   EggyUI is unrelated to Microsoft.
-*   Windows® is a registered trademark of Microsoft.
-*   This is an unofficial visual modification for personalized experiences, not a Microsoft product.
+🔒 **Legal and Trademark Statement**:
+*   EggyUI is not affiliated with Microsoft or NetEase.
+*   Windows is a registered trademark of Microsoft. "Eggy Party" is a registered trademark of NetEase.
+*   This is merely an unofficial visual modification on the Windows system, intended to allow for more personalized use.
 
 ![Eggy UI 3.5 Promotional Image](Promo.png "Eggy UI 3.5")
