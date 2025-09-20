@@ -21,53 +21,36 @@
  * ============================================================================
  */
 
-using System;
-using System.IO;
-
 namespace EggyUI_Settings
 {
     // 特殊值
     public static class SpecialValue
     {
         // 使用懒加载和线程安全的方式初始化静态字段
-        private static readonly Lazy<int> _ntVersion = new(() => Environment.OSVersion.Version.Major);
-        private static readonly Lazy<int> _buildVersion = new(() => Environment.OSVersion.Version.Build);
-        private static readonly Lazy<string> _system32Path = new(() => 
+        private static Lazy<int> NTVersion_Lazy => new(() => Environment.OSVersion.Version.Major);
+        private static Lazy<int> BuildVersion_Lazy => new(() => Environment.OSVersion.Version.Build);
+        private static Lazy<string> System32Path_Lazy => new(() =>
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.System)));
-        private static readonly Lazy<string> _sysWOW64Path = new(() => 
+        private static Lazy<string> SysWOW64Path_Lazy => new(() =>
             Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.SystemX86)));
-        private static readonly Lazy<string> _gpeditMsc32bit = new(() => 
-            Path.Combine(_sysWOW64Path.Value, "gpedit.msc"));
-        private static readonly Lazy<string> _gpeditMsc64bit = new(() => 
-            Path.Combine(_system32Path.Value, "gpedit.msc"));
-        private static readonly Lazy<string> _lusrMgrMsc32bit = new(() => 
-            Path.Combine(_sysWOW64Path.Value, "lusrmgr.msc"));
-        private static readonly Lazy<string> _lusrMgrMsc64bit = new(() => 
-            Path.Combine(_system32Path.Value, "lusrmgr.msc"));
 
         // NT内核版本
-        public static int NTVersion => _ntVersion.Value;
+        public static int NTVersion => NTVersion_Lazy.Value;
 
         // 系统内部版本
-        public static int BuildVersion => _buildVersion.Value;
+        public static int BuildVersion => BuildVersion_Lazy.Value;
 
         // System32目录
-        public static string System32Path => _system32Path.Value;
+        public static string System32Path => System32Path_Lazy.Value;
 
         // SysWOW64目录
-        public static string SysWOW64Path => _sysWOW64Path.Value;
+        public static string SysWOW64Path => SysWOW64Path_Lazy.Value;
 
-        // 32位组策略编辑器目录
-        public static string GpeditMsc32bit => _gpeditMsc32bit.Value;
-        
-        // 64位组策略编辑器目录
-        public static string GpeditMsc64bit => _gpeditMsc64bit.Value;
+        // 判断系统是否为Win11
+        public static bool IsWin11 => !((NTVersion < 10) && (BuildVersion < 22000));
 
-        // 32位本地用户和组目录
-        public static string LusrMgrMsc32bit => _lusrMgrMsc32bit.Value;
-
-        // 64位本地用户和组目录
-        public static string LusrMgrMsc64bit => _lusrMgrMsc64bit.Value;
+        // 判断系统是否为Win10或Win11
+        public static bool IsWin10OrWin11 => !(NTVersion < 10);
 
         /// <summary>
         /// 获取有效的管理工具路径（优先64位，其次32位）
@@ -76,28 +59,21 @@ namespace EggyUI_Settings
         /// <returns>有效的工具路径或null</returns>
         public static string? GetValidToolPath(string toolName)
         {
-            string? path64bit = null;
-            string? path32bit = null;
+            string? path64bit = Path.Combine(System32Path, toolName);
+            string? path32bit = Path.Combine(SysWOW64Path, toolName);
 
-            switch (toolName.ToLower())
+            if (path64bit is not null && File.Exists(path64bit))
             {
-                case "gpedit.msc":
-                    path64bit = GpeditMsc64bit;
-                    path32bit = GpeditMsc32bit;
-                    break;
-                case "lusrmgr.msc":
-                    path64bit = LusrMgrMsc64bit;
-                    path32bit = LusrMgrMsc32bit;
-                    break;
-            }
-
-            if (path64bit != null && File.Exists(path64bit))
                 return path64bit;
-            
-            if (path32bit != null && File.Exists(path32bit))
+            }
+            else if (path32bit is not null && File.Exists(path32bit))
+            {
                 return path32bit;
-            
-            return null;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

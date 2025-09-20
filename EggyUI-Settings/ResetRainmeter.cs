@@ -21,10 +21,7 @@
  * ============================================================================
  */
 
-using System;
 using System.Diagnostics;
-using System.IO;
-using System.Threading;
 
 namespace EggyUI_Settings
 {
@@ -33,7 +30,7 @@ namespace EggyUI_Settings
         readonly string RainmeterPath = _RainmeterPath;
         readonly string? SkinPath = _RainmeterSkinPath;
 
-        public void Start(CancellationToken cancellationToken = default)
+        public void Start()
         {
             // 1. 结束Rainmeter进程
             KillProcess("Rainmeter");
@@ -66,7 +63,8 @@ namespace EggyUI_Settings
             }
             catch (Exception ex)
             {
-                throw new Exception($"删除自定义皮肤目录错误: {ex.Message}");
+                Debug.WriteLine($"[重置 Rainmeter] 删除自定义皮肤目录错误: {ex.Message}");
+                throw;
             }
         }
 
@@ -95,7 +93,8 @@ namespace EggyUI_Settings
             {
                 // 这里抛出异常是为了在调用ResetRainmeter.Start()时能够捕获到异常，
                 // 并在调用方进行处理，避免程序崩溃。
-                throw new Exception($"结束Rainmeter进程错误: {ex.Message}");
+                Debug.WriteLine($"[重置 Rainmeter] 结束Rainmeter进程错误: {ex.Message}");
+                throw;
             }
         }
 
@@ -118,7 +117,8 @@ namespace EggyUI_Settings
             }
             catch (Exception ex)
             {
-                throw new Exception($"删除Rainmeter皮肤目录错误: {ex.Message}");
+                Debug.WriteLine($"[重置 Rainmeter] 删除Rainmeter皮肤目录错误: {ex.Message}");
+                throw;
             }
         }
 
@@ -154,7 +154,8 @@ namespace EggyUI_Settings
             }
             catch (Exception ex)
             {
-                throw new Exception($"启动Rainmeter错误: {ex.Message}");
+                Debug.WriteLine($"[重置 Rainmeter] 启动Rainmeter错误: {ex.Message}");
+                throw;
             }
         }
     }

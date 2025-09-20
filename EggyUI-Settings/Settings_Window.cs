@@ -21,12 +21,7 @@
  * ============================================================================
  */
 
-using Microsoft.Win32;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Windows.Forms;
 
 namespace EggyUI_Settings
 {
@@ -34,18 +29,13 @@ namespace EggyUI_Settings
     {
         #region 变量、方法
 
-        public Settings_Window()
-        {
-            // 实例化配置服务
-            _configurationService = new ConfigurationService();
-            _configurationService.LoadConfiguration();
-            InitializeComponent();
-        }
-
+        // 配置服务
         private readonly ConfigurationService _configurationService;
 
-        private readonly object _syncObject = new(); // 用于线程同步的对象
+        // 用于线程同步的对象
+        private object _syncObject => new();
 
+        // 用于标记是否正在重置Rainmeter
         private bool isResetting = false;
 
         // 获取Rainmeter路径
@@ -63,11 +53,34 @@ namespace EggyUI_Settings
         // 获取Start11路径
         private string Start11Path => _configurationService.Start11Path;
 
+        // 获取StartAllBack配置程序路径
+        private readonly Lazy<string> _startAllBackSettingsPath;
+        private string StartAllBackSettingsPath => _startAllBackSettingsPath.Value;
+        
+        // 获取Start11配置程序路径
+        private readonly Lazy<string> _start11SettingsPath;
+        private string Start11SettingsPath => _start11SettingsPath.Value;
+        
         // 贴图路径
-        private static readonly string ArtWorkPath = Path.Combine(Application.StartupPath, "artwork");
-
+        private static readonly Lazy<string> _artWorkPath = new(() => Path.Combine(Application.StartupPath, "artwork"));
+        private static string ArtWorkPath => _artWorkPath.Value;
+        
         // 版本信息文件路径
-        private static readonly string VersionInfoFile = Path.Combine(ArtWorkPath, "VersionInfo.txt");
+        private static readonly Lazy<string> _versionInfoFile = new(() => Path.Combine(ArtWorkPath, "VersionInfo.txt"));
+        private static string VersionInfoFile => _versionInfoFile.Value;
+
+        public Settings_Window()
+        {
+            // 实例化配置服务
+            _configurationService = new ConfigurationService();
+            _configurationService.LoadConfiguration();
+            
+            // 初始化懒加载的配置路径
+            _startAllBackSettingsPath = new(() => Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"));
+            _start11SettingsPath = new(() => Path.Combine(Start11Path, "Start11Config.exe"));
+
+            InitializeComponent();
+        }
 
         private static bool TaskExists(string taskName)
         {
@@ -136,12 +149,8 @@ namespace EggyUI_Settings
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(
-                            $"加载图片时发生错误：{ex.Message}",
-                            "错误",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                            );
+                        MessageBox.Show($"加载图片时发生错误：{ex.Message}", "错误",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -153,12 +162,12 @@ namespace EggyUI_Settings
         /// <param name="sender">按钮对象</param>
         /// <param name="pathMap">路径字典</param>
         /// <param name="errorMsgMap">错误信息字典</param>
-        /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param>
+        /* /// <param name="argumentsMap">参数字典（可选，不填默认设置为空）</param> */
         private static void ButtonClickHandler(
             object sender,
             Dictionary<string, string> pathMap, // 路径字典
-            Dictionary<string, string> errorMsgMap, // 错误信息字典
-            Dictionary<string, string>? argumentsMap = null // 参数字典（可选，不填默认设置为空）
+            Dictionary<string, string> errorMsgMap // 错误信息字典
+            /* Dictionary<string, string>? argumentsMap = null // 参数字典（可选，不填默认设置为空）*/
             )
         {
             Button btn = (Button)sender;
@@ -169,10 +178,10 @@ namespace EggyUI_Settings
                 Process.Start(new ProcessStartInfo
                 {
                     FileName = fileName,
-                    Arguments = argumentsMap != null
+                    /* Arguments = argumentsMap is not null
                     ? (argumentsMap.TryGetValue(btn.Name, out string? value1)
                     ? value1 : argumentsMap["default"])
-                    : "",
+                    : "", */
                     UseShellExecute = true
                 });
             }
@@ -180,15 +189,11 @@ namespace EggyUI_Settings
             {
                 string errorMsg = errorMsgMap.TryGetValue(btn.Name, out string? msg)
                     ? msg : errorMsgMap["default"];
-                MessageBox.Show(
-                    string.Format(errorMsg, ex.Message),
-                    "错误",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
+                MessageBox.Show(string.Format(errorMsg, ex.Message), "错误",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         #endregion
 
         #region 事件处理程序
@@ -197,7 +202,7 @@ namespace EggyUI_Settings
         {
             // 加载版本图片
             string VersionImage = Path.Combine(ArtWorkPath, "EggyUI_Version.png");
-            if (File.Exists(VersionImage)) 
+            if (File.Exists(VersionImage))
                 VersionPic.Image = Image.FromFile(VersionImage);
 
             // 加载文件夹背景预览图
@@ -205,25 +210,24 @@ namespace EggyUI_Settings
 
             // 检测当前系统是否能够使用本地用户和组（一般家庭版不能用）
             string? lusrMgrMscPath = SpecialValue.GetValidToolPath("lusrmgr.msc");
-            OpenLusrmgrMsc.Enabled = !SystemVersionChecker.IsHomeEdition() && lusrMgrMscPath != null;
+            OpenLusrmgrMsc.Enabled = !SystemVersionChecker.IsHomeEdition()
+                && lusrMgrMscPath is not null;
 
             // 检测当前系统是否能够使用组策略编辑器
             string? gpeditMscPath = SpecialValue.GetValidToolPath("gpedit.msc");
-            OpenGpeditMsc.Enabled = gpeditMscPath != null;
+            OpenGpeditMsc.Enabled = gpeditMscPath is not null;
 
             // 检测开始菜单修改软件是否存在
-            OpenStartAllBackSettings.Enabled =
-                File.Exists(Path.Combine(StartAllBackPath, "StartAllBackCfg.exe"))
-                && !((SpecialValue.NTVersion < 10) && (SpecialValue.BuildVersion < 22000)); // 检测是否为Win11
-            OpenStart11Settings.Enabled =
-                File.Exists(Path.Combine(Start11Path, "Start11Config.exe"))
-                && !(SpecialValue.NTVersion < 10); // 检测是否为Win10/Win11
+            OpenStartAllBackSettings.Enabled = File.Exists(StartAllBackSettingsPath)
+                && SpecialValue.IsWin11; // 检测是否为Win11
+            OpenStart11Settings.Enabled = File.Exists(Start11SettingsPath)
+                && !SpecialValue.IsWin10OrWin11; // 检测是否为Win10/Win11
 
             // 检测Rainmeter计划任务是否存在
             CheckRainmeterStartup.Checked = TaskExists("EggyUIWidgets");
 
-            // 使用线程异步读取版本信息文件
-            Thread ReadVersionFileThread = new(() =>
+            // 使用Task异步读取版本信息文件
+            Task.Run(() =>
             {
                 if (File.Exists(VersionInfoFile))
                 {
@@ -249,7 +253,6 @@ namespace EggyUI_Settings
                     }
                 }
             });
-            ReadVersionFileThread.Start();
         }
 
         private void CheckRainmeterStartup_CheckedChanged(object sender, EventArgs e)
@@ -275,57 +278,51 @@ namespace EggyUI_Settings
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    $"设置Rainmeter开机启动时发生错误：{ex.Message}",
-                    "错误",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                    );
+                MessageBox.Show($"设置Rainmeter开机启动时发生错误：{ex.Message}", "错误",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void ResetRainmeterButton_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show(
-                "你确定要重置Rainmeter吗？",
-                "提示",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning)
-                == DialogResult.Yes)
+            if (MessageBox.Show("你确定要重置Rainmeter吗？", "提示",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 lock (_syncObject)
                 {
-                    if (isResetting) 
+                    if (isResetting)
                     {
-                        MessageBox.Show("重置操作正在进行中，请稍候...");
+                        // 提示操作正在进行中
+                        SettingsNotifyIcon.BalloonTipTitle = "提示";
+                        SettingsNotifyIcon.BalloonTipText = "重置操作正在进行中，请稍候...";
+                        SettingsNotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                        SettingsNotifyIcon.ShowBalloonTip(3000);
                         return;
                     }
                     isResetting = true;
                 }
 
                 ResetRainmeterConfig.Enabled = false;
-                
-                Thread ResetRainmeterThread = new(() =>
+
+                Task.Run(() =>
                 {
                     try
                     {
                         ResetRainmeter reset = new(RainmeterPath, RainmeterSkinPath);
                         reset.Start();
-                        MessageBox.Show(
-                            "Rainmeter重置成功！",
-                            "提示",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Information
-                            );
+                        // 重置成功气泡通知
+                        SettingsNotifyIcon.BalloonTipTitle = "Rainmeter重置成功";
+                        SettingsNotifyIcon.BalloonTipText = "您可继续使用Rainmeter。";
+                        SettingsNotifyIcon.BalloonTipIcon = ToolTipIcon.Info;
+                        SettingsNotifyIcon.ShowBalloonTip(3000);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(
-                            $"重置Rainmeter时发生错误：{ex.Message}",
-                            "错误",
-                            MessageBoxButtons.OK,
-                            MessageBoxIcon.Error
-                            );
+                        // 重置失败气泡通知
+                        SettingsNotifyIcon.BalloonTipTitle = "Rainmeter重置失败";
+                        SettingsNotifyIcon.BalloonTipText = $"重置Rainmeter时发生错误：{ex.Message}";
+                        SettingsNotifyIcon.BalloonTipIcon = ToolTipIcon.Error;
+                        SettingsNotifyIcon.ShowBalloonTip(3000);
                     }
                     finally
                     {
@@ -336,7 +333,6 @@ namespace EggyUI_Settings
                         ResetRainmeterConfig.Invoke((Action)(() => ResetRainmeterConfig.Enabled = true));
                     }
                 });
-                ResetRainmeterThread.Start();
             }
         }
 
@@ -393,8 +389,8 @@ namespace EggyUI_Settings
             // 路径列表
             Dictionary<string, string> pathMap = new()
             {
-                { "OpenStartAllBackSettings", Path.Combine(StartAllBackPath, "StartAllBackCfg.exe") },
-                { "OpenStart11Settings", Path.Combine(Start11Path, "Start11Config.exe") },
+                { "OpenStartAllBackSettings", StartAllBackSettingsPath },
+                { "OpenStart11Settings", Start11SettingsPath },
                 { "OpenPersonalizationSettings", "ms-settings:personalization" },
                 { "default", "control" },
                 { "OpenGpeditMsc", SpecialValue.GetValidToolPath("gpedit.msc") ?? string.Empty },
@@ -434,6 +430,11 @@ namespace EggyUI_Settings
             };
 
             ButtonClickHandler(sender, pathMap, errorMsgMap);
+        }
+
+        private void Quit_ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
 
         #endregion

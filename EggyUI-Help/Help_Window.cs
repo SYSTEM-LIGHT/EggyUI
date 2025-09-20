@@ -54,7 +54,7 @@ namespace EggyUIHelp
 
         private void Form1_Load(object? sender, EventArgs e)
         {
-            BGMEnable = true;
+            BGMEnable = false;
             LoadHelpContent();
             PlayPauseBGM();
         }
@@ -83,7 +83,7 @@ namespace EggyUIHelp
                 foreach (var category in categories)
                 {
                     string categoryText = category.Attribute("Text")?.Value ?? "未命名类别";
-                    TreeNode categoryNode = new TreeNode(categoryText);
+                    TreeNode categoryNode = new(categoryText);
                     
                     // 添加Answer元素
                     var answerElements = category.Elements("Answer");
@@ -119,7 +119,7 @@ namespace EggyUIHelp
 
         private void PlayPauseBGM()
         {
-            if (BGMEnable)
+            if (!BGMEnable)
             {
                 // 尝试从嵌入资源加载音频
                 var assembly = Assembly.GetExecutingAssembly();
@@ -132,7 +132,7 @@ namespace EggyUIHelp
                         Button3.Text = "关闭音乐";
                         player = new SoundPlayer(stream);
                         player.PlayLooping();
-                        BGMEnable = false;
+                        BGMEnable = true;
                         return;
                     }
                 }
@@ -143,7 +143,7 @@ namespace EggyUIHelp
                     Button3.Text = "关闭音乐";
                     player = new SoundPlayer("BGM.wav");
                     player.PlayLooping();
-                    BGMEnable = false;
+                    BGMEnable = true;
                 }
                 else
                 {
@@ -160,7 +160,7 @@ namespace EggyUIHelp
                     player.Dispose();
                     player = null;
                 }
-                BGMEnable = true;
+                BGMEnable = false;
             }
         }
 

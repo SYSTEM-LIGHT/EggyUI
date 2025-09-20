@@ -31,10 +31,19 @@ namespace EggyUI_Settings
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Settings_Window());
+            try
+            {
+                // To customize application configuration such as set high DPI settings or default font,
+                // see https://aka.ms/applicationconfiguration.
+                ApplicationConfiguration.Initialize();
+                Application.Run(new Settings_Window());
+            }
+            catch (Exception ex)
+            {
+                // 处理应用程序启动时的异常
+                MessageBox.Show($"应用程序启动时发生错误：{ex.Message}", "错误",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
